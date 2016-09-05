@@ -3,59 +3,100 @@
     ViewBag.Title = "Index";
 }
 
-<section id="hero-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="block wow fadeInUp" data-wow-delay=".3s">
-
-                    <!-- Slider -->
-                    <section class="cd-intro">
-                        <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s">
-                            <span>HI, MY NAME IS JONATHON & I AM A</span><br>
-                            <span class="cd-words-wrapper">
-                                <b class="is-visible">DESIGNER</b>
-                                <b>DEVELOPER</b>
-                                <b>FATHER</b>
-                            </span>
-                        </h1>
-                    </section> <!-- cd-intro -->
-                    <!-- /.slider -->
-                    <h2 class="wow fadeInUp animated" data-wow-delay=".6s">
-                        With 10 years experience, I've occupied many roles including digital design director,<br> web designer and developer. This site showcases some of my work.
-                    </h2>
-                    <a class="btn-lines dark light wow fadeInUp animated smooth-scroll btn btn-default btn-green" data-wow-delay=".9s" href="#works" data-section="#works">View Works</a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
 <section id="about">
     <div class="container">
         <div class="row">
 
-            <div class="col-md-12">
-                <h1>LOGO</h1>
-            </div>
-
-            <div class="col-md-12">
+            <div class="col-md-12" style="margin-top:-8%">
+                <center>
+                    <h3 class="subtitle wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms" style="font-size:40px">Welcome to gasan!</h3>
+                </center>
                 <div class="col-md-6">
-                    <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="1000ms">
-                        <h2>Mission</h2>
+                    <div class="col-md-6">
+                        <div class="team-member wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".3s">
+                            <div class="team-img">
+                                <img src="~/images/Mayor_Lim.jpg" class="team-pic" alt="">
+                            </div>
+                            <h3 class="team_name">Hon. VICTORIA L. LIM</h3>
+                            <p class="team_designation">Municipal Mayor</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".3s" style="margin-top:25px">
                         <p>
-                            Hello, I’m a UI/UX Designer & Front End Developer from Victoria, Australia. I hold a master degree of Web Design from the World University.And scrambled it to make a type specimen book. It has survived not only five centuries
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, adipisci voluptatum repudiandae, natus impedit repellat aut officia illum at assumenda iusto reiciendis placeat. Temporibus, vero.
+                            It is my distinct pride and pleasure to welcome you to our municipality.
+                            Be with nature, enjoy the crystal clear blue waters and experience the hospitality of our people and the rich cultural traditions we have.
+                            Take time to explore this town and see for yourself the beauty and simplicity it holds. 
                         </p>
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div id="myCarousel" class="carousel slide col-md-6 wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms" data-ride="carousel" style="margin-top:25px">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="~/images/childrens-park-646x401.jpg" alt="Chania">
+                        </div>
+
+                        <div class="item">
+                            <img src="~/images/gasan-seaview-park-646x401.jpg" alt="Chania">
+                        </div>
+
+                        <div class="item">
+                            <img src="~/images/gasang-gasang-festival-646x401.jpg" alt="Chania">
+                        </div>
+
+                        <div class="item">
+                            <img src="~/images/NATURES-PARK-646x401.jpg" alt="Chania">
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="col-md-12">
+                    <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="1000ms">
+                        <h2>Mission</h2>
+                        <p>
+                            Effective delivery of basic services by harnessing the natural, human and fiscal resources through a capable and people-oriented leadership.
+                        </p>                      
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="1000ms">
+                        <h2>Vision</h2>
+                        <p>
+                            A God-centered, self-reliant and empowered citizenry living harmoniously in an ecologically-balanced community through effective governance.
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <div class="col-md-12">
                     <section class="about-feature clearfix">
                         <div class="container-fluid">
                             <div class="about-feature-3 wow fadeInDown col-md" data-wow-duration="1000ms" data-wow-delay=".7s" style="padding:20px">
@@ -65,28 +106,16 @@
                                 <p>
                                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.
                                 </p>
-                            </div>
 
+                                <div class="blog-content col-md-offset-8">
+                                    <button class="btn btn-primary">Continue Reading</button>
+                                </div>
+                            </div>
                         </div>
                     </section>
                 </div>
-            </div>
 
-
-            <div class="col-md-12">
-                <div class="col-md-6">
-                    <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="1000ms">
-                        <h2>Vision</h2>
-                        <p>
-                            Hello, I’m a UI/UX Designer & Front End Developer from Victoria, Australia. I hold a master degree of Web Design from the World University.And scrambled it to make a type specimen book. It has survived not only five centuries
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, adipisci voluptatum repudiandae, natus impedit repellat aut officia illum at assumenda iusto reiciendis placeat. Temporibus, vero.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <section class="about-feature clearfix">
                         <div class="container-fluid">
                             <div class="about-feature-3 wow fadeInDown col-md" data-wow-duration="1000ms" data-wow-delay=".7s" style="padding:20px">
@@ -96,13 +125,15 @@
                                 <p>
                                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.
                                 </p>
+                                <div class="blog-content col-md-offset-8">
+                                    <button class="btn btn-primary">Continue Reading</button>
+                                </div>
                             </div>
 
                         </div>
                     </section>
                 </div>
             </div>
-
         </div>
     </div>
 </section>

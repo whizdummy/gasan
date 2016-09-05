@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -23,8 +23,8 @@
                 <!-- /responsive nav button -->
                 <!-- logo -->
                 <div class="navbar-brand">
-                    <a href="index.html">
-                        <img src="../images/logo.png" alt="">
+                    <a href="/">
+                        <img src="../images/gasan_logo.png" alt="" style="height:50px;margin-top:-20%">
                     </a>
                 </div>
                 <!-- /logo -->
@@ -33,20 +33,23 @@
             <nav class="collapse navbar-collapse navbar-right" role="navigation">
                 <div class="main-menu">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li> 
+                        <li>@Html.ActionLink("General Profile", "Index", "GeneralProfile")</li>                 
                         <li>@Html.ActionLink("Events", "Index", "Events")</li>
                         <li>@Html.ActionLink("Announcements", "Index", "Announcements")</li>
                         <li>@Html.ActionLink("Officials", "Index", "Officials")</li>
+                        <li>@Html.ActionLink("Contact Us", "Index", "Contacts")</li>
                         <li>@Html.ActionLink("Login", "Index", "Home")</li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
                             <div class="dropdown-menu">
-                                <ul>                                    
+                                <ul>
                                     <li>@Html.ActionLink("Profile", "Index", "Home")</li>
                                     <li>@Html.ActionLink("Logout", "Index", "Home")</li>
                                 </ul>
                             </div>
                         </li>
+
 
                     </ul>
                 </div>
@@ -54,9 +57,10 @@
             <!-- /main nav -->
         </div>
     </header>
-
-    @RenderBody()
-
+    <div>
+        <br /><br /><br /><br />
+        @RenderBody()
+    </div>
     
 
 

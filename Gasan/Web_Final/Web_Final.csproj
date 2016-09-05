@@ -197,8 +197,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnnouncementsController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\GeneralProfileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OfficialsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -214,6 +217,9 @@
     <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\daterangepicker.min.css" />
+    <Content Include="Content\fileinput.css" />
+    <Content Include="Content\fileinput.min.css" />
     <Content Include="Content\ionicons.min.css" />
     <Content Include="Content\jquery.fancybox.css" />
     <Content Include="Content\main.css" />
@@ -221,13 +227,30 @@
     <Content Include="Content\owl.theme.css" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\slider.css" />
+    <Content Include="Content\vertical_tab.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\ionicons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\childrens-park-646x401.jpg" />
+    <Content Include="images\gasan-seaview-park-646x401.jpg" />
+    <Content Include="images\gasang-gasang-festival-646x401.jpg" />
+    <Content Include="images\gasan_logo.png" />
+    <Content Include="images\IMG_4133-646x401.jpg" />
+    <Content Include="images\KALESAYAHAN-646x401.jpg" />
+    <Content Include="images\LAYAG-KO-TO-646x401.jpg" />
     <Content Include="images\logo.png" />
+    <Content Include="images\Mayor_Lim.jpg" />
+    <Content Include="images\municipal-building-646x401.jpg" />
+    <Content Include="images\NATURES-PARK-646x401.jpg" />
+    <Content Include="images\NITO-PRODUCTS-646x401.jpg" />
+    <Content Include="images\pamaypay-dawis-646x401.jpg" />
+    <Content Include="images\San_Jose_Esposo_de_Maria_Parish_Church,_Gasan,_Marinduque.jpg" />
     <Content Include="images\slider.jpg" />
+    <Content Include="images\st.-joseph3-646x401.jpg" />
+    <Content Include="images\TALAO-CAVE-646x401.jpg" />
+    <Content Include="images\Tres-Reyes-Pinggan2-646x401.jpg" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -239,9 +262,13 @@
     <Content Include="fonts\ionicons.ttf" />
     <Content Include="fonts\ionicons.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\daterangepicker.min.js" />
+    <Content Include="Scripts\fileinput.js" />
+    <Content Include="Scripts\fileinput.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.custom.min.js" />
     <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -255,6 +282,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\slider.js" />
+    <Content Include="Scripts\vertical_tabs.js" />
     <Content Include="Scripts\wow.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
@@ -292,6 +320,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Officials\Index.cshtml" />
+    <Content Include="Views\Maintenance\Index.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
+    <Content Include="Views\GeneralProfile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

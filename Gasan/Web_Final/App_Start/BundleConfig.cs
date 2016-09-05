@@ -19,8 +19,7 @@ namespace Web_Final
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(                     
                       "~/Scripts/respond.js",
                       "~/Scripts/modernizr-2.6.2.min.js",
                       "~/Scripts/jquery.min.js",
@@ -28,11 +27,17 @@ namespace Web_Final
                       "~/Scripts/wow.min.js",
                       "~/Scripts/slider.js",
                       "~/Scripts/jquery.fancybox.js",
-                      "~/Scripts/main.js"
+                      "~/Scripts/main.js",
+                      "~/Scripts/jquery-ui.custom.min.js",
+                      "~/Scripts/daterangepicker.min.js",
+                      "~/Scripts/vertical_tabs.js",
+                      "~/Scripts/fileinput.js",
+                      "~/Scripts/bootstrap.min.js"
                       ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
+                      "~/Content/fileinput.css",
                       "~/Content/ionicons.min.css",
                       "~/Content/animate.css",
                       "~/Content/slider.css",
@@ -40,7 +45,9 @@ namespace Web_Final
                       "~/Content/owl.theme.css",
                       "~/Content/jquery.fancybox.css",
                       "~/Content/main.css",
-                      "~/Content/responsive.css"
+                      "~/Content/responsive.css",
+                      "~/Content/daterangepicker.min.css",
+                      "~/Content/vertical_tab.css"                      
                       ));
         }
     }
