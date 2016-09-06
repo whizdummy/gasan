@@ -48,9 +48,9 @@
                                 <span ng-bind="vmMissionVision.missionVisionTitle"></span>
                             </h3>
                             <div class="form-group">
-                                <textarea rows="6" placeholder="Description" class="form-control" name="" ng-bind="vmMissionVision.missionVisionDescription"></textarea>
+                                <textarea rows="6" placeholder="Description" class="form-control" name="" ng-model="vmMissionVision.missionVisionDescription" ng-bind="vmMissionVision.missionVisionDescription"></textarea>
                             </div>
-                            <button class="btn btn-primary asd" id="btnMS_Save" ng-click="vmMissionVision.saveMissionVisionOnClick()"><span class="glyphicon-check"></span> Save</button>                            
+                            <button class="btn btn-primary asd" id="btnMS_Save" ng-click="vmMissionVision.saveMissionVisionOnClick(vmMissionVision.isMission)"><span class="glyphicon-check"></span> Save</button>                            
                         </div>
                     </div>
                          
@@ -771,10 +771,3 @@
 </div>
 
 @Scripts.Render("~/bundles/jquery")
-<script>
-
-    function saveMissionVisionOnClick()
-    {
-        $("#mission_vision_div").fadeOut();
-    }
-</script>
