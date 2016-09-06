@@ -18,6 +18,7 @@ namespace Web_Final.Models
         public int OfficialsID { get; set; }
         public Nullable<int> Rating { get; set; }
         public System.DateTime RatedAt { get; set; }
+        public int UserOfficialsRatingID { get; set; }
     
         public virtual Official Official { get; set; }
         public virtual User User { get; set; }

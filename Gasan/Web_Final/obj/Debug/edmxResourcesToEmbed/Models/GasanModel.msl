@@ -1,21 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="GasanDataModelStoreContainer" CdmEntityContainer="GasanDataEntities">
-    <EntitySetMapping Name="Admin">
+    <EntitySetMapping Name="Admins">
       <EntityTypeMapping TypeName="GasanDataModel.Admin">
         <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="AdminID" ColumnName="AdminID" />
-          <ScalarProperty Name="MunicipalityID" ColumnName="MunicipalityID" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-          <ScalarProperty Name="UpdateddAt" ColumnName="UpdateddAt" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
           <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Announcement">
+    <EntitySetMapping Name="Announcements">
       <EntityTypeMapping TypeName="GasanDataModel.Announcement">
         <MappingFragment StoreEntitySet="Announcement">
           <ScalarProperty Name="AnnouncementID" ColumnName="AnnouncementID" />
@@ -29,7 +30,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Event">
+    <EntitySetMapping Name="Events">
       <EntityTypeMapping TypeName="GasanDataModel.Event">
         <MappingFragment StoreEntitySet="Event">
           <ScalarProperty Name="EventID" ColumnName="EventID" />
@@ -44,7 +45,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Municipality">
+    <EntitySetMapping Name="Municipalities">
       <EntityTypeMapping TypeName="GasanDataModel.Municipality">
         <MappingFragment StoreEntitySet="Municipality">
           <ScalarProperty Name="MunicipalityID" ColumnName="MunicipalityID" />
@@ -54,6 +55,18 @@
           <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
           <ScalarProperty Name="Mission" ColumnName="Mission" />
           <ScalarProperty Name="Vision" ColumnName="Vision" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Municipality_Admin">
+      <EntityTypeMapping TypeName="GasanDataModel.Municipality_Admin">
+        <MappingFragment StoreEntitySet="Municipality_Admin">
+          <ScalarProperty Name="MunicipalityAdminID" ColumnName="MunicipalityAdminID" />
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+          <ScalarProperty Name="MunicipalityID" ColumnName="MunicipalityID" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -71,7 +84,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Officials">
-      <EntityTypeMapping TypeName="GasanDataModel.Officials">
+      <EntityTypeMapping TypeName="GasanDataModel.Official">
         <MappingFragment StoreEntitySet="Officials">
           <ScalarProperty Name="OfficialsID" ColumnName="OfficialsID" />
           <ScalarProperty Name="MunicipalityID" ColumnName="MunicipalityID" />
@@ -88,7 +101,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Position">
+    <EntitySetMapping Name="Positions">
       <EntityTypeMapping TypeName="GasanDataModel.Position">
         <MappingFragment StoreEntitySet="Position">
           <ScalarProperty Name="PositionID" ColumnName="PositionID" />
@@ -100,7 +113,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="GasanDataModel.sysdiagrams">
+      <EntityTypeMapping TypeName="GasanDataModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -110,7 +123,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="User">
+    <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="GasanDataModel.User">
         <MappingFragment StoreEntitySet="User">
           <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -120,6 +133,7 @@
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

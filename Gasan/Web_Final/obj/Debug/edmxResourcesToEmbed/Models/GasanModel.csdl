@@ -5,14 +5,15 @@
       <PropertyRef Name="AdminID" />
     </Key>
     <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MunicipalityID" Type="Int32" Nullable="false" />
     <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MiddleName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="UpdateddAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="DeletedAt" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Municipality" Relationship="Self.fk_admin_municipality" FromRole="Admin" ToRole="Municipality" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Municipality_Admin" Relationship="Self.fk_municipality_admin_admin" FromRole="Admin" ToRole="Municipality_Admin" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Announcement">
     <Key>
@@ -55,11 +56,24 @@
     <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Mission" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Vision" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Admin" Relationship="Self.fk_admin_municipality" FromRole="Municipality" ToRole="Admin" />
-    <NavigationProperty Name="Announcement" Relationship="Self.fk_announcement_municipality" FromRole="Municipality" ToRole="Announcement" />
-    <NavigationProperty Name="Event" Relationship="Self.fk_event_municipality" FromRole="Municipality" ToRole="Event" />
+    <NavigationProperty Name="Announcements" Relationship="Self.fk_announcement_municipality" FromRole="Municipality" ToRole="Announcement" />
+    <NavigationProperty Name="Events" Relationship="Self.fk_event_municipality" FromRole="Municipality" ToRole="Event" />
+    <NavigationProperty Name="Municipality_Admin" Relationship="Self.fk_municipality_admin_municipality" FromRole="Municipality" ToRole="Municipality_Admin" />
     <NavigationProperty Name="Municipality_History" Relationship="Self.fk_municipality_hist_municipality" FromRole="Municipality" ToRole="Municipality_History" />
     <NavigationProperty Name="Officials" Relationship="Self.fk_officials_municipality" FromRole="Municipality" ToRole="Officials" />
+  </EntityType>
+  <EntityType Name="Municipality_Admin">
+    <Key>
+      <PropertyRef Name="MunicipalityAdminID" />
+    </Key>
+    <Property Name="MunicipalityAdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminID" Type="Int32" Nullable="false" />
+    <Property Name="MunicipalityID" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DeletedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Admin" Relationship="Self.fk_municipality_admin_admin" FromRole="Municipality_Admin" ToRole="Admin" />
+    <NavigationProperty Name="Municipality" Relationship="Self.fk_municipality_admin_municipality" FromRole="Municipality_Admin" ToRole="Municipality" />
   </EntityType>
   <EntityType Name="Municipality_History">
     <Key>
@@ -74,7 +88,7 @@
     <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Municipality" Relationship="Self.fk_municipality_hist_municipality" FromRole="Municipality_History" ToRole="Municipality" />
   </EntityType>
-  <EntityType Name="Officials">
+  <EntityType Name="Official">
     <Key>
       <PropertyRef Name="OfficialsID" />
     </Key>
@@ -105,7 +119,7 @@
     <Property Name="DeletedAt" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Officials" Relationship="Self.fk_officials_position" FromRole="Position" ToRole="Officials" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
+  <EntityType Name="sysdiagram">
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
@@ -126,6 +140,7 @@
     <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="User_Event_Subscription" Relationship="Self.fk_user_event_sub_officials" FromRole="User" ToRole="User_Event_Subscription" />
     <NavigationProperty Name="User_Officials_Rating" Relationship="Self.fk_user_off_rating_users" FromRole="User" ToRole="User_Officials_Rating" />
   </EntityType>
@@ -151,18 +166,18 @@
     <Property Name="OfficialsID" Type="Int32" Nullable="false" />
     <Property Name="Rating" Type="Int32" />
     <Property Name="RatedAt" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Officials" Relationship="Self.fk_user_off_rating_officials" FromRole="User_Officials_Rating" ToRole="Officials" />
+    <NavigationProperty Name="Official" Relationship="Self.fk_user_off_rating_officials" FromRole="User_Officials_Rating" ToRole="Officials" />
     <NavigationProperty Name="User" Relationship="Self.fk_user_off_rating_users" FromRole="User_Officials_Rating" ToRole="User" />
   </EntityType>
-  <Association Name="fk_admin_municipality">
-    <End Role="Municipality" Type="Self.Municipality" Multiplicity="1" />
-    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+  <Association Name="fk_municipality_admin_admin">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+    <End Role="Municipality_Admin" Type="Self.Municipality_Admin" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Municipality">
-        <PropertyRef Name="MunicipalityID" />
+      <Principal Role="Admin">
+        <PropertyRef Name="AdminID" />
       </Principal>
-      <Dependent Role="Admin">
-        <PropertyRef Name="MunicipalityID" />
+      <Dependent Role="Municipality_Admin">
+        <PropertyRef Name="AdminID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -202,6 +217,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="fk_municipality_admin_municipality">
+    <End Role="Municipality" Type="Self.Municipality" Multiplicity="1" />
+    <End Role="Municipality_Admin" Type="Self.Municipality_Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Municipality">
+        <PropertyRef Name="MunicipalityID" />
+      </Principal>
+      <Dependent Role="Municipality_Admin">
+        <PropertyRef Name="MunicipalityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_municipality_hist_municipality">
     <End Role="Municipality" Type="Self.Municipality" Multiplicity="1" />
     <End Role="Municipality_History" Type="Self.Municipality_History" Multiplicity="*" />
@@ -216,7 +243,7 @@
   </Association>
   <Association Name="fk_officials_municipality">
     <End Role="Municipality" Type="Self.Municipality" Multiplicity="1" />
-    <End Role="Officials" Type="Self.Officials" Multiplicity="*" />
+    <End Role="Officials" Type="Self.Official" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Municipality">
         <PropertyRef Name="MunicipalityID" />
@@ -228,7 +255,7 @@
   </Association>
   <Association Name="fk_officials_position">
     <End Role="Position" Type="Self.Position" Multiplicity="1" />
-    <End Role="Officials" Type="Self.Officials" Multiplicity="*" />
+    <End Role="Officials" Type="Self.Official" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Position">
         <PropertyRef Name="PositionID" />
@@ -239,7 +266,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="fk_user_off_rating_officials">
-    <End Role="Officials" Type="Self.Officials" Multiplicity="1" />
+    <End Role="Officials" Type="Self.Official" Multiplicity="1" />
     <End Role="User_Officials_Rating" Type="Self.User_Officials_Rating" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Officials">
@@ -275,43 +302,48 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="GasanDataEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Admin" EntityType="Self.Admin" />
-    <EntitySet Name="Announcement" EntityType="Self.Announcement" />
-    <EntitySet Name="Event" EntityType="Self.Event" />
-    <EntitySet Name="Municipality" EntityType="Self.Municipality" />
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Announcements" EntityType="Self.Announcement" />
+    <EntitySet Name="Events" EntityType="Self.Event" />
+    <EntitySet Name="Municipalities" EntityType="Self.Municipality" />
+    <EntitySet Name="Municipality_Admin" EntityType="Self.Municipality_Admin" />
     <EntitySet Name="Municipality_History" EntityType="Self.Municipality_History" />
-    <EntitySet Name="Officials" EntityType="Self.Officials" />
-    <EntitySet Name="Position" EntityType="Self.Position" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="Officials" EntityType="Self.Official" />
+    <EntitySet Name="Positions" EntityType="Self.Position" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Users" EntityType="Self.User" />
     <EntitySet Name="User_Event_Subscription" EntityType="Self.User_Event_Subscription" />
     <EntitySet Name="User_Officials_Rating" EntityType="Self.User_Officials_Rating" />
-    <AssociationSet Name="fk_admin_municipality" Association="Self.fk_admin_municipality">
-      <End Role="Municipality" EntitySet="Municipality" />
-      <End Role="Admin" EntitySet="Admin" />
+    <AssociationSet Name="fk_municipality_admin_admin" Association="Self.fk_municipality_admin_admin">
+      <End Role="Admin" EntitySet="Admins" />
+      <End Role="Municipality_Admin" EntitySet="Municipality_Admin" />
     </AssociationSet>
     <AssociationSet Name="fk_announcement_municipality" Association="Self.fk_announcement_municipality">
-      <End Role="Municipality" EntitySet="Municipality" />
-      <End Role="Announcement" EntitySet="Announcement" />
+      <End Role="Municipality" EntitySet="Municipalities" />
+      <End Role="Announcement" EntitySet="Announcements" />
     </AssociationSet>
     <AssociationSet Name="fk_event_municipality" Association="Self.fk_event_municipality">
-      <End Role="Municipality" EntitySet="Municipality" />
-      <End Role="Event" EntitySet="Event" />
+      <End Role="Municipality" EntitySet="Municipalities" />
+      <End Role="Event" EntitySet="Events" />
     </AssociationSet>
     <AssociationSet Name="fk_user_event_sub_event" Association="Self.fk_user_event_sub_event">
-      <End Role="Event" EntitySet="Event" />
+      <End Role="Event" EntitySet="Events" />
       <End Role="User_Event_Subscription" EntitySet="User_Event_Subscription" />
     </AssociationSet>
+    <AssociationSet Name="fk_municipality_admin_municipality" Association="Self.fk_municipality_admin_municipality">
+      <End Role="Municipality" EntitySet="Municipalities" />
+      <End Role="Municipality_Admin" EntitySet="Municipality_Admin" />
+    </AssociationSet>
     <AssociationSet Name="fk_municipality_hist_municipality" Association="Self.fk_municipality_hist_municipality">
-      <End Role="Municipality" EntitySet="Municipality" />
+      <End Role="Municipality" EntitySet="Municipalities" />
       <End Role="Municipality_History" EntitySet="Municipality_History" />
     </AssociationSet>
     <AssociationSet Name="fk_officials_municipality" Association="Self.fk_officials_municipality">
-      <End Role="Municipality" EntitySet="Municipality" />
+      <End Role="Municipality" EntitySet="Municipalities" />
       <End Role="Officials" EntitySet="Officials" />
     </AssociationSet>
     <AssociationSet Name="fk_officials_position" Association="Self.fk_officials_position">
-      <End Role="Position" EntitySet="Position" />
+      <End Role="Position" EntitySet="Positions" />
       <End Role="Officials" EntitySet="Officials" />
     </AssociationSet>
     <AssociationSet Name="fk_user_off_rating_officials" Association="Self.fk_user_off_rating_officials">
@@ -319,11 +351,11 @@
       <End Role="User_Officials_Rating" EntitySet="User_Officials_Rating" />
     </AssociationSet>
     <AssociationSet Name="fk_user_event_sub_officials" Association="Self.fk_user_event_sub_officials">
-      <End Role="User" EntitySet="User" />
+      <End Role="User" EntitySet="Users" />
       <End Role="User_Event_Subscription" EntitySet="User_Event_Subscription" />
     </AssociationSet>
     <AssociationSet Name="fk_user_off_rating_users" Association="Self.fk_user_off_rating_users">
-      <End Role="User" EntitySet="User" />
+      <End Role="User" EntitySet="Users" />
       <End Role="User_Officials_Rating" EntitySet="User_Officials_Rating" />
     </AssociationSet>
   </EntityContainer>

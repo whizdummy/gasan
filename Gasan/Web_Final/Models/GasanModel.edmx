@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GasanDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GasanDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="AdminID" />
@@ -17,6 +17,7 @@
           <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
           <Property Name="DeletedAt" Type="datetime" />
           <Property Name="Password" Type="text" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Announcement">
           <Key>
@@ -130,26 +131,20 @@
           <Property Name="CreatedAt" Type="datetime" Nullable="false" />
           <Property Name="Password" Type="text" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\DJFABLE02\DESKTOP\GASAN\GASAN\WEB_FINAL\APP_DATA\DB_GASAN.MDF.dbo.User_Event_Subscription' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="User_Event_Subscription">
           <Key>
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="EventID" />
-            <PropertyRef Name="SubscribedAt" />
+            <PropertyRef Name="UserEventSubscriptionID" />
           </Key>
+          <Property Name="UserEventSubscriptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="EventID" Type="int" Nullable="false" />
           <Property Name="SubscribedAt" Type="datetime" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\DJFABLE02\DESKTOP\GASAN\GASAN\WEB_FINAL\APP_DATA\DB_GASAN.MDF.dbo.User_Officials_Rating' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="User_Officials_Rating">
           <Key>
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="OfficialsID" />
-            <PropertyRef Name="RatedAt" />
+            <PropertyRef Name="UserOfficialsRatingID" />
           </Key>
+          <Property Name="UserOfficialsRatingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="OfficialsID" Type="int" Nullable="false" />
           <Property Name="Rating" Type="int" />
@@ -298,21 +293,8 @@ warning 6002: The table/view 'C:\USERS\DJFABLE02\DESKTOP\GASAN\GASAN\WEB_FINAL\A
           <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="User_Event_Subscription" EntityType="Self.User_Event_Subscription" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [User_Event_Subscription].[UserID] AS [UserID], 
-    [User_Event_Subscription].[EventID] AS [EventID], 
-    [User_Event_Subscription].[SubscribedAt] AS [SubscribedAt]
-    FROM [dbo].[User_Event_Subscription] AS [User_Event_Subscription]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="User_Officials_Rating" EntityType="Self.User_Officials_Rating" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [User_Officials_Rating].[UserID] AS [UserID], 
-    [User_Officials_Rating].[OfficialsID] AS [OfficialsID], 
-    [User_Officials_Rating].[Rating] AS [Rating], 
-    [User_Officials_Rating].[RatedAt] AS [RatedAt]
-    FROM [dbo].[User_Officials_Rating] AS [User_Officials_Rating]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="User_Event_Subscription" EntityType="Self.User_Event_Subscription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Officials_Rating" EntityType="Self.User_Officials_Rating" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_announcement_municipality" Association="Self.fk_announcement_municipality">
             <End Role="Municipality" EntitySet="Municipality" />
             <End Role="Announcement" EntitySet="Announcement" />
@@ -358,8 +340,7 @@ warning 6002: The table/view 'C:\USERS\DJFABLE02\DESKTOP\GASAN\GASAN\WEB_FINAL\A
             <End Role="User_Officials_Rating" EntitySet="User_Officials_Rating" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GasanDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -376,6 +357,7 @@ warning 6002: The table/view 'C:\USERS\DJFABLE02\DESKTOP\GASAN\GASAN\WEB_FINAL\A
           <Property Name="DeletedAt" Type="DateTime" Precision="3" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Municipality_Admin" Relationship="Self.fk_municipality_admin_admin" FromRole="Admin" ToRole="Municipality_Admin" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Announcement">
           <Key>
@@ -511,18 +493,21 @@ warning 6002: The table/view 'C:\USERS\DJFABLE02\DESKTOP\GASAN\GASAN\WEB_FINAL\A
             <PropertyRef Name="UserID" />
             <PropertyRef Name="EventID" />
             <PropertyRef Name="SubscribedAt" />
+            <PropertyRef Name="UserEventSubscriptionID" />
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="EventID" Type="Int32" Nullable="false" />
           <Property Name="SubscribedAt" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Event" Relationship="Self.fk_user_event_sub_event" FromRole="User_Event_Subscription" ToRole="Event" />
           <NavigationProperty Name="User" Relationship="Self.fk_user_event_sub_officials" FromRole="User_Event_Subscription" ToRole="User" />
+          <Property Name="UserEventSubscriptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="User_Officials_Rating">
           <Key>
             <PropertyRef Name="UserID" />
             <PropertyRef Name="OfficialsID" />
             <PropertyRef Name="RatedAt" />
+            <PropertyRef Name="UserOfficialsRatingID" />
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="OfficialsID" Type="Int32" Nullable="false" />
@@ -530,6 +515,7 @@ warning 6002: The table/view 'C:\USERS\DJFABLE02\DESKTOP\GASAN\GASAN\WEB_FINAL\A
           <Property Name="RatedAt" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Official" Relationship="Self.fk_user_off_rating_officials" FromRole="User_Officials_Rating" ToRole="Officials" />
           <NavigationProperty Name="User" Relationship="Self.fk_user_off_rating_users" FromRole="User_Officials_Rating" ToRole="User" />
+          <Property Name="UserOfficialsRatingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <Association Name="fk_municipality_admin_admin">
           <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
@@ -730,6 +716,7 @@ warning 6002: The table/view 'C:\USERS\DJFABLE02\DESKTOP\GASAN\GASAN\WEB_FINAL\A
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="GasanDataModel.Admin">
               <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="AdminID" ColumnName="AdminID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
@@ -865,6 +852,7 @@ warning 6002: The table/view 'C:\USERS\DJFABLE02\DESKTOP\GASAN\GASAN\WEB_FINAL\A
           <EntitySetMapping Name="User_Event_Subscription">
             <EntityTypeMapping TypeName="GasanDataModel.User_Event_Subscription">
               <MappingFragment StoreEntitySet="User_Event_Subscription">
+                <ScalarProperty Name="UserEventSubscriptionID" ColumnName="UserEventSubscriptionID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="EventID" ColumnName="EventID" />
                 <ScalarProperty Name="SubscribedAt" ColumnName="SubscribedAt" />
@@ -874,6 +862,7 @@ warning 6002: The table/view 'C:\USERS\DJFABLE02\DESKTOP\GASAN\GASAN\WEB_FINAL\A
           <EntitySetMapping Name="User_Officials_Rating">
             <EntityTypeMapping TypeName="GasanDataModel.User_Officials_Rating">
               <MappingFragment StoreEntitySet="User_Officials_Rating">
+                <ScalarProperty Name="UserOfficialsRatingID" ColumnName="UserOfficialsRatingID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="OfficialsID" ColumnName="OfficialsID" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
