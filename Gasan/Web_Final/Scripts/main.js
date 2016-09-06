@@ -1,4 +1,16 @@
-(function($){
+$(document).ready(function () {
+    $("#mission_vision_div").hide();
+
+    $("#btnMS_Save").click(function () {
+        $("#mission_vision_div").hide();
+    });
+
+    $("#btnMS_Edit").click(function () {
+        $("#mission_vision_div").show();
+    });
+});
+
+(function ($) {
     $.fn.scrollingTo = function( opts ) {
         var defaults = {
             animationTime : 1000,
@@ -54,11 +66,8 @@ jQuery(document).ready(function(){
 
 
 
-
-$(document).ready(function(){
-
-
-
+$(document).ready(function () {
+   
 
     $(window).scroll(function () {
         if ($(window).scrollTop() > 50) {

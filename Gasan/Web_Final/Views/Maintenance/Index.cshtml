@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Maintenance";
 }
 <div class="container">
     <div class="row">
@@ -41,12 +41,12 @@
                     <div class="col-md-12">
                         <hr />
 
-                        <div class="col-md-10">
+                        <div class="col-md-10" id="mission_vision_div">
                             <h3>Mission</h3>
                             <div class="form-group">
                                 <textarea rows="6" placeholder="Description" class="form-control" name="" id=""></textarea>
                             </div>
-                            <button class="btn btn-primary"><span class="glyphicon-check"></span> Save</button>                            
+                            <button class="btn btn-primary asd" id="btnMS_Save"><span class="glyphicon-check"></span> Save</button>                            
                         </div>
                     </div>
                          
@@ -60,7 +60,7 @@
                                 Descriptions Descriptions Descriptions Descriptions Descriptions
                                 Descriptions Descriptions Descriptions Descriptions Descriptions
                             </p>                            
-                            <button class="btn btn-warning"><span class="glyphicon-pencil"></span> Edit</button>
+                            <button class="btn btn-warning"  id="btnMS_Edit"><span class="glyphicon-pencil"></span> Edit</button>
                         </div>
                     </div>
 
@@ -308,10 +308,19 @@
                 <!--///////////////////////////LOGO//////////////////////////////////-->
                 <div class="bhoechie-tab-content">
                     <h3>Logo Maintenance</h3>
-                    <div class="form-group col-md-12">
-                        <label for="exampleInputFile">Choose Image</label>
-                        <input type="file" id="exampleInputFile">
+                    <div class="col-md-offset-10">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#logo_modal"><span class="glyphicon-plus"> Add</span></button>
                     </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-2">
+                            <img src="~/images/childrens-park-646x401.jpg" alt="" style="height:100px; width:100px; margin-top:25px">
+                        </div>
+                        <div class="col-md-3">
+                            <h3>Label</h3>
+                            <button type="button" class="btn btn-primary">Set as Active Logo</button>
+                        </div>
+                    </div>                    
                 </div>
 
                 <!--///////////////////////////ACHIEVEMENTS//////////////////////////////////-->
@@ -709,7 +718,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <center>
-                    <h3><span class="ace-icon fa fa-glass"></span>Achievement Informations</h3>
+                    <h3><span class="ace-icon fa fa-glass"></span>Banner Informations</h3>
                 </center>
             </div>
             <div class="modal-body">
@@ -732,3 +741,31 @@
 </div>
 
 
+
+<!--///////////////////////////LOGO_MODAL//////////////////////////////////-->
+<div class="modal fade" id="logo_modal" role="dialog" style="margin-top:100px">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="modal-content">
+            <div class="modal-header">
+                <center>
+                    <h3><span class="ace-icon fa fa-glass"></span>Logo Informations</h3>
+                </center>
+            </div>
+            <div class="modal-body">
+                <section id="contact-section" style="padding:0px">
+                    <div class="block">
+                        <div class="contact-form">
+                            <form id="contact-form" method="post" action="" role="form">
+                                <input id="file-0a" class="file" type="file" multiple data-min-file-count="1">
+                                <br>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="reset" class="btn btn-default">Reset</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
