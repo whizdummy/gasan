@@ -28,6 +28,7 @@ namespace Web_Final.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public System.DateTime CreatedAt { get; set; }
+        public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User_Event_Subscription> User_Event_Subscription { get; set; }

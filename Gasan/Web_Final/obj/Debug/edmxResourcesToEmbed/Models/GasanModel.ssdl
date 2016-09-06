@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GasanDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MunicipalityID" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="255" />
+    <Property Name="LastName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdateddAt" Type="datetime" Nullable="false" />
+    <Property Name="DeletedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Announcement">
+    <Key>
+      <PropertyRef Name="AnnouncementID" />
+    </Key>
+    <Property Name="AnnouncementID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MunicipalityID" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Description" Type="text" />
+    <Property Name="Duration" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="IsLapsed" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="EventID" />
+    </Key>
+    <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MunicipalityID" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Description" Type="text" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="IsLapsed" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Municipality">
+    <Key>
+      <PropertyRef Name="MunicipalityID" />
+    </Key>
+    <Property Name="MunicipalityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="ImagePath" Type="text" />
+    <Property Name="Mission" Type="text" Nullable="false" />
+    <Property Name="Vision" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Municipality_History">
+    <Key>
+      <PropertyRef Name="MunicipalityHistoryID" />
+    </Key>
+    <Property Name="MunicipalityHistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MunicipalityID" Type="int" Nullable="false" />
+    <Property Name="Year" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Description" Type="text" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="ImagePath" Type="text" />
+  </EntityType>
+  <EntityType Name="Officials">
+    <Key>
+      <PropertyRef Name="OfficialsID" />
+    </Key>
+    <Property Name="OfficialsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MunicipalityID" Type="int" Nullable="false" />
+    <Property Name="PositionID" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="255" />
+    <Property Name="LastName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="OfficeStart" Type="datetime" Nullable="false" />
+    <Property Name="OfficeEnd" Type="datetime" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="DeletedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="PositionID" />
+    </Key>
+    <Property Name="PositionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="DeletedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="255" />
+    <Property Name="LastName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\DJFABLE02\DESKTOP\GASAN\GASAN\WEB_FINAL\APP_DATA\DB_GASAN.MDF.dbo.User_Event_Subscription' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="User_Event_Subscription">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="EventID" />
+      <PropertyRef Name="SubscribedAt" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="EventID" Type="int" Nullable="false" />
+    <Property Name="SubscribedAt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\DJFABLE02\DESKTOP\GASAN\GASAN\WEB_FINAL\APP_DATA\DB_GASAN.MDF.dbo.User_Officials_Rating' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="User_Officials_Rating">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="OfficialsID" />
+      <PropertyRef Name="RatedAt" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="OfficialsID" Type="int" Nullable="false" />
+    <Property Name="Rating" Type="int" />
+    <Property Name="RatedAt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_admin_municipality">
+    <End Role="Municipality" Type="Self.Municipality" Multiplicity="1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Municipality">
+        <PropertyRef Name="MunicipalityID" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="MunicipalityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_announcement_municipality">
+    <End Role="Municipality" Type="Self.Municipality" Multiplicity="1" />
+    <End Role="Announcement" Type="Self.Announcement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Municipality">
+        <PropertyRef Name="MunicipalityID" />
+      </Principal>
+      <Dependent Role="Announcement">
+        <PropertyRef Name="MunicipalityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_event_municipality">
+    <End Role="Municipality" Type="Self.Municipality" Multiplicity="1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Municipality">
+        <PropertyRef Name="MunicipalityID" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="MunicipalityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_municipality_hist_municipality">
+    <End Role="Municipality" Type="Self.Municipality" Multiplicity="1" />
+    <End Role="Municipality_History" Type="Self.Municipality_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Municipality">
+        <PropertyRef Name="MunicipalityID" />
+      </Principal>
+      <Dependent Role="Municipality_History">
+        <PropertyRef Name="MunicipalityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_officials_municipality">
+    <End Role="Municipality" Type="Self.Municipality" Multiplicity="1" />
+    <End Role="Officials" Type="Self.Officials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Municipality">
+        <PropertyRef Name="MunicipalityID" />
+      </Principal>
+      <Dependent Role="Officials">
+        <PropertyRef Name="MunicipalityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_officials_position">
+    <End Role="Position" Type="Self.Position" Multiplicity="1" />
+    <End Role="Officials" Type="Self.Officials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="PositionID" />
+      </Principal>
+      <Dependent Role="Officials">
+        <PropertyRef Name="PositionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_event_sub_event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="User_Event_Subscription" Type="Self.User_Event_Subscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="User_Event_Subscription">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_event_sub_officials">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="User_Event_Subscription" Type="Self.User_Event_Subscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="User_Event_Subscription">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_off_rating_officials">
+    <End Role="Officials" Type="Self.Officials" Multiplicity="1" />
+    <End Role="User_Officials_Rating" Type="Self.User_Officials_Rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Officials">
+        <PropertyRef Name="OfficialsID" />
+      </Principal>
+      <Dependent Role="User_Officials_Rating">
+        <PropertyRef Name="OfficialsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_off_rating_users">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="User_Officials_Rating" Type="Self.User_Officials_Rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="User_Officials_Rating">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GasanDataModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Announcement" EntityType="Self.Announcement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Municipality" EntityType="Self.Municipality" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Municipality_History" EntityType="Self.Municipality_History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Officials" EntityType="Self.Officials" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Event_Subscription" EntityType="Self.User_Event_Subscription" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [User_Event_Subscription].[UserID] AS [UserID], 
+    [User_Event_Subscription].[EventID] AS [EventID], 
+    [User_Event_Subscription].[SubscribedAt] AS [SubscribedAt]
+    FROM [dbo].[User_Event_Subscription] AS [User_Event_Subscription]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="User_Officials_Rating" EntityType="Self.User_Officials_Rating" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [User_Officials_Rating].[UserID] AS [UserID], 
+    [User_Officials_Rating].[OfficialsID] AS [OfficialsID], 
+    [User_Officials_Rating].[Rating] AS [Rating], 
+    [User_Officials_Rating].[RatedAt] AS [RatedAt]
+    FROM [dbo].[User_Officials_Rating] AS [User_Officials_Rating]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="fk_admin_municipality" Association="Self.fk_admin_municipality">
+      <End Role="Municipality" EntitySet="Municipality" />
+      <End Role="Admin" EntitySet="Admin" />
+    </AssociationSet>
+    <AssociationSet Name="fk_announcement_municipality" Association="Self.fk_announcement_municipality">
+      <End Role="Municipality" EntitySet="Municipality" />
+      <End Role="Announcement" EntitySet="Announcement" />
+    </AssociationSet>
+    <AssociationSet Name="fk_event_municipality" Association="Self.fk_event_municipality">
+      <End Role="Municipality" EntitySet="Municipality" />
+      <End Role="Event" EntitySet="Event" />
+    </AssociationSet>
+    <AssociationSet Name="fk_municipality_hist_municipality" Association="Self.fk_municipality_hist_municipality">
+      <End Role="Municipality" EntitySet="Municipality" />
+      <End Role="Municipality_History" EntitySet="Municipality_History" />
+    </AssociationSet>
+    <AssociationSet Name="fk_officials_municipality" Association="Self.fk_officials_municipality">
+      <End Role="Municipality" EntitySet="Municipality" />
+      <End Role="Officials" EntitySet="Officials" />
+    </AssociationSet>
+    <AssociationSet Name="fk_officials_position" Association="Self.fk_officials_position">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="Officials" EntitySet="Officials" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_event_sub_event" Association="Self.fk_user_event_sub_event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="User_Event_Subscription" EntitySet="User_Event_Subscription" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_event_sub_officials" Association="Self.fk_user_event_sub_officials">
+      <End Role="User" EntitySet="User" />
+      <End Role="User_Event_Subscription" EntitySet="User_Event_Subscription" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_off_rating_officials" Association="Self.fk_user_off_rating_officials">
+      <End Role="Officials" EntitySet="Officials" />
+      <End Role="User_Officials_Rating" EntitySet="User_Officials_Rating" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_off_rating_users" Association="Self.fk_user_off_rating_users">
+      <End Role="User" EntitySet="User" />
+      <End Role="User_Officials_Rating" EntitySet="User_Officials_Rating" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -80,6 +80,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -208,8 +210,62 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>GasanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Announcement.cs">
+      <DependentUpon>GasanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Event.cs">
+      <DependentUpon>GasanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GasanModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GasanModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GasanModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GasanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GasanModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GasanModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Municipality.cs">
+      <DependentUpon>GasanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Municipality_History.cs">
+      <DependentUpon>GasanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Officials.cs">
+      <DependentUpon>GasanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Position.cs">
+      <DependentUpon>GasanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>GasanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>GasanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>GasanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>GasanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User_Event_Subscription.cs">
+      <DependentUpon>GasanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User_Officials_Rating.cs">
+      <DependentUpon>GasanModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -255,6 +311,16 @@
     <Content Include="images\st.-joseph3-646x401.jpg" />
     <Content Include="images\TALAO-CAVE-646x401.jpg" />
     <Content Include="images\Tres-Reyes-Pinggan2-646x401.jpg" />
+    <Content Include="Models\GasanModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GasanModel.edmx</DependentUpon>
+      <LastGenOutput>GasanModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\GasanModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GasanModel.edmx</DependentUpon>
+      <LastGenOutput>GasanModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -265,6 +331,13 @@
     <Content Include="fonts\ionicons.eot" />
     <Content Include="fonts\ionicons.ttf" />
     <Content Include="fonts\ionicons.woff" />
+    <EntityDeploy Include="Models\GasanModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GasanModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\GasanModel.edmx.diagram">
+      <DependentUpon>GasanModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\daterangepicker.min.js" />
     <Content Include="Scripts\fileinput.js" />
@@ -328,7 +401,9 @@
     <Content Include="Views\Contacts\Index.cshtml" />
     <Content Include="Views\GeneralProfile\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
