@@ -241,22 +241,19 @@
     <Compile Include="Models\Municipality.cs">
       <DependentUpon>GasanModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Municipality_Admin.cs">
+      <DependentUpon>GasanModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Municipality_History.cs">
       <DependentUpon>GasanModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Officials.cs">
+    <Compile Include="Models\Official.cs">
       <DependentUpon>GasanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Position.cs">
       <DependentUpon>GasanModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>GasanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>GasanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>GasanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
