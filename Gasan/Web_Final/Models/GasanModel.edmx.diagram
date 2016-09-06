@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4aaa98952e3b4c50848401c03c27b926" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="GasanDataModel.Admin" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GasanDataModel.Announcement" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GasanDataModel.Event" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GasanDataModel.Municipality" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GasanDataModel.Municipality_History" Width="1.5" PointX="2.375" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GasanDataModel.Officials" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GasanDataModel.Position" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GasanDataModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GasanDataModel.User" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GasanDataModel.User_Event_Subscription" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GasanDataModel.User_Officials_Rating" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="GasanDataModel.fk_admin_municipality" ManuallyRouted="false" />
+        <AssociationConnector Association="GasanDataModel.fk_announcement_municipality" ManuallyRouted="false" />
+        <AssociationConnector Association="GasanDataModel.fk_event_municipality" ManuallyRouted="false" />
+        <AssociationConnector Association="GasanDataModel.fk_user_event_sub_event" ManuallyRouted="false" />
+        <AssociationConnector Association="GasanDataModel.fk_municipality_hist_municipality" ManuallyRouted="false" />
+        <AssociationConnector Association="GasanDataModel.fk_officials_municipality" ManuallyRouted="false" />
+        <AssociationConnector Association="GasanDataModel.fk_officials_position" ManuallyRouted="false" />
+        <AssociationConnector Association="GasanDataModel.fk_user_off_rating_officials" ManuallyRouted="false" />
+        <AssociationConnector Association="GasanDataModel.fk_user_event_sub_officials" ManuallyRouted="false" />
+        <AssociationConnector Association="GasanDataModel.fk_user_off_rating_users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
