@@ -3,7 +3,9 @@
     ViewBag.Title = "AdminAccount";    
 }
 
-<div class="col-md-12" style="margin-top:-50px">
+@Scripts.Render("~/bundles/angular")
+
+<div class="col-md-12" style="margin-top:-50px" ng-app="gasanApp" ng-controller="AdminLoginController as vmAdminLogin">
     <section class="company-description">
 
         <div class="col-md-12">

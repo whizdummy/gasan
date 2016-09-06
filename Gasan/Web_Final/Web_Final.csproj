@@ -219,7 +219,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MunicipalityController.cs" />
     <Compile Include="Controllers\OfficialsController.cs" />
     <Compile Include="Controllers\UserAccountController.cs" />
     <Compile Include="Global.asax.cs">
@@ -334,6 +333,7 @@
       <DependentUpon>GasanModel.edmx</DependentUpon>
       <LastGenOutput>GasanModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\admin_login_angular.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\angular.min.js" />
