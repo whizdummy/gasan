@@ -4,7 +4,6 @@
     <EntitySetMapping Name="Admins">
       <EntityTypeMapping TypeName="GasanDataModel.Admin">
         <MappingFragment StoreEntitySet="Admin">
-          <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="AdminID" ColumnName="AdminID" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
@@ -13,6 +12,7 @@
           <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
           <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
           <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -140,6 +140,7 @@
     <EntitySetMapping Name="User_Event_Subscription">
       <EntityTypeMapping TypeName="GasanDataModel.User_Event_Subscription">
         <MappingFragment StoreEntitySet="User_Event_Subscription">
+          <ScalarProperty Name="UserEventSubscriptionID" ColumnName="UserEventSubscriptionID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="EventID" ColumnName="EventID" />
           <ScalarProperty Name="SubscribedAt" ColumnName="SubscribedAt" />
@@ -149,6 +150,7 @@
     <EntitySetMapping Name="User_Officials_Rating">
       <EntityTypeMapping TypeName="GasanDataModel.User_Officials_Rating">
         <MappingFragment StoreEntitySet="User_Officials_Rating">
+          <ScalarProperty Name="UserOfficialsRatingID" ColumnName="UserOfficialsRatingID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="OfficialsID" ColumnName="OfficialsID" />
           <ScalarProperty Name="Rating" ColumnName="Rating" />

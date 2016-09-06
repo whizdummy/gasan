@@ -11,9 +11,9 @@
     <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="DeletedAt" Type="DateTime" Precision="3" />
-    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Municipality_Admin" Relationship="Self.fk_municipality_admin_admin" FromRole="Admin" ToRole="Municipality_Admin" />
-    <Property Name="Username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Announcement">
     <Key>
@@ -140,16 +140,15 @@
     <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="User_Event_Subscription" Relationship="Self.fk_user_event_sub_officials" FromRole="User" ToRole="User_Event_Subscription" />
     <NavigationProperty Name="User_Officials_Rating" Relationship="Self.fk_user_off_rating_users" FromRole="User" ToRole="User_Officials_Rating" />
   </EntityType>
   <EntityType Name="User_Event_Subscription">
     <Key>
-      <PropertyRef Name="UserID" />
-      <PropertyRef Name="EventID" />
-      <PropertyRef Name="SubscribedAt" />
+      <PropertyRef Name="UserEventSubscriptionID" />
     </Key>
+    <Property Name="UserEventSubscriptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <Property Name="EventID" Type="Int32" Nullable="false" />
     <Property Name="SubscribedAt" Type="DateTime" Nullable="false" Precision="3" />
@@ -158,10 +157,9 @@
   </EntityType>
   <EntityType Name="User_Officials_Rating">
     <Key>
-      <PropertyRef Name="UserID" />
-      <PropertyRef Name="OfficialsID" />
-      <PropertyRef Name="RatedAt" />
+      <PropertyRef Name="UserOfficialsRatingID" />
     </Key>
+    <Property Name="UserOfficialsRatingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <Property Name="OfficialsID" Type="Int32" Nullable="false" />
     <Property Name="Rating" Type="Int32" />

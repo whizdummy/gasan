@@ -13,6 +13,9 @@ namespace Web_Final
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Add this to get attribute routes to work
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

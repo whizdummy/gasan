@@ -14,10 +14,10 @@ namespace Web_Final.Models
     
     public partial class User_Event_Subscription
     {
+        public int UserEventSubscriptionID { get; set; }
         public int UserID { get; set; }
         public int EventID { get; set; }
         public System.DateTime SubscribedAt { get; set; }
-        public int UserEventSubscriptionID { get; set; }
     
         public virtual Event Event { get; set; }
         public virtual User User { get; set; }

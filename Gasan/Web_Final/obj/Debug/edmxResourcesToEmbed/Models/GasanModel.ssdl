@@ -11,7 +11,7 @@
     <Property Name="CreatedAt" Type="datetime" Nullable="false" />
     <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
     <Property Name="DeletedAt" Type="datetime" />
-    <Property Name="Password" Type="text" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="Username" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <EntityType Name="Announcement">
@@ -124,28 +124,22 @@
     <Property Name="LastName" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="CreatedAt" Type="datetime" Nullable="false" />
-    <Property Name="Password" Type="text" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\DJFABLE02\DESKTOP\GASAN\GASAN\WEB_FINAL\APP_DATA\DB_GASAN.MDF.dbo.User_Event_Subscription' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="User_Event_Subscription">
     <Key>
-      <PropertyRef Name="UserID" />
-      <PropertyRef Name="EventID" />
-      <PropertyRef Name="SubscribedAt" />
+      <PropertyRef Name="UserEventSubscriptionID" />
     </Key>
+    <Property Name="UserEventSubscriptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="EventID" Type="int" Nullable="false" />
     <Property Name="SubscribedAt" Type="datetime" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\DJFABLE02\DESKTOP\GASAN\GASAN\WEB_FINAL\APP_DATA\DB_GASAN.MDF.dbo.User_Officials_Rating' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="User_Officials_Rating">
     <Key>
-      <PropertyRef Name="UserID" />
-      <PropertyRef Name="OfficialsID" />
-      <PropertyRef Name="RatedAt" />
+      <PropertyRef Name="UserOfficialsRatingID" />
     </Key>
+    <Property Name="UserOfficialsRatingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="OfficialsID" Type="int" Nullable="false" />
     <Property Name="Rating" Type="int" />
@@ -294,21 +288,8 @@ warning 6002: The table/view 'C:\USERS\DJFABLE02\DESKTOP\GASAN\GASAN\WEB_FINAL\A
     <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="User_Event_Subscription" EntityType="Self.User_Event_Subscription" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [User_Event_Subscription].[UserID] AS [UserID], 
-    [User_Event_Subscription].[EventID] AS [EventID], 
-    [User_Event_Subscription].[SubscribedAt] AS [SubscribedAt]
-    FROM [dbo].[User_Event_Subscription] AS [User_Event_Subscription]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="User_Officials_Rating" EntityType="Self.User_Officials_Rating" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [User_Officials_Rating].[UserID] AS [UserID], 
-    [User_Officials_Rating].[OfficialsID] AS [OfficialsID], 
-    [User_Officials_Rating].[Rating] AS [Rating], 
-    [User_Officials_Rating].[RatedAt] AS [RatedAt]
-    FROM [dbo].[User_Officials_Rating] AS [User_Officials_Rating]</DefiningQuery>
-    </EntitySet>
+    <EntitySet Name="User_Event_Subscription" EntityType="Self.User_Event_Subscription" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Officials_Rating" EntityType="Self.User_Officials_Rating" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="fk_announcement_municipality" Association="Self.fk_announcement_municipality">
       <End Role="Municipality" EntitySet="Municipality" />
       <End Role="Announcement" EntitySet="Announcement" />
