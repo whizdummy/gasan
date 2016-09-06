@@ -23,6 +23,7 @@ namespace Web_Final.Models
         public System.DateTime UpdateddAt { get; set; }
         public Nullable<System.DateTime> DeletedAt { get; set; }
         public string Password { get; set; }
+        public System.DateTime UpdatedAt { get; set; }
     
         public virtual Municipality Municipality { get; set; }
     }
