@@ -3,7 +3,9 @@
     ViewBag.Title = "Index";
 }
 
-<section id="about">
+@Scripts.Render("~/bundles/angular")
+
+<section id="about" ng-app="gasanApp">
     <div class="container">
         <div class="row">
 
@@ -71,12 +73,12 @@
                 </div>
             </div>
             
-            <div class="col-md-6">
+            <div class="col-md-6" ng-controller="MissionVisionController as vmMissionVision">
                 <div class="col-md-12">
                     <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="1000ms">
                         <h2>Mission</h2>
                         <p>
-                            Effective delivery of basic services by harnessing the natural, human and fiscal resources through a capable and people-oriented leadership.
+                           <span ng-bind="vmMissionVision.missionDetails"></span>
                         </p>                      
                     </div>
                 </div>
@@ -85,7 +87,7 @@
                     <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="1000ms">
                         <h2>Vision</h2>
                         <p>
-                            A God-centered, self-reliant and empowered citizenry living harmoniously in an ecologically-balanced community through effective governance.
+                            <span ng-bind="vmMissionVision.visionDetails"></span>
                         </p>
                     </div>
                 </div>

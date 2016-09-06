@@ -104,7 +104,9 @@ namespace Web_Final.Controllers
                               && adm.Password == password
                               select adm;
 
-            return Redirect(BASE_URL + "Maintenance");
+            Session["AdminID"] = queryResult.First().AdminID;
+
+            return Redirect("http://" + Request.Url.Authority + "/Maintenance");
         }
     }
 }
