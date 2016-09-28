@@ -81,13 +81,56 @@
 
 
                 <!--///////////////////////////ANNOUNCEMENTS//////////////////////////////////-->
-                <div class="bhoechie-tab-content">
+                <div class="bhoechie-tab-content" ng-controller="AnnouncementController as vmAnnouncement">
                     <h3>Announcement Maintenance</h3>
                     <div class="col-md-offset-11">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#announcement_modal"><span class="glyphicon-plus"> Add</span></button>
+                        <button class="btn btn-primary" ng-click="vmAnnouncement.announcementOnClick(1, announcement.id)"><span class="glyphicon-plus"> Add</span></button>
                     </div>
 
                     <div class="col-md-12">
+                        <hr />
+
+                        <div class="col-md-10" id="announcement_div">
+                            <form ng-submit="vmAnnouncement.announcementOnSubmit(vmAnnouncement.announcementForm.announcementId)">
+
+                                <div class="form-group">
+                                    <input type="text" placeholder="Announcement Title" 
+                                           class="form-control" name="" id="" ng-model="vmAnnouncement.announcementForm.title">
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea rows="6" placeholder="Description" class="form-control" 
+                                              name="" id="" ng-model="vmAnnouncement.announcementForm.description"></textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label>Duration</label>
+                                    <div class="form-group">
+                                        <div class="col-md-3">
+                                            <input type="number" placeholder="Day(s)" 
+                                                   class="form-control" name="" id="" min="0" ng-model="vmAnnouncement.announcementForm.durationDay">
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <input type="number" placeholder="Hours(s)" 
+                                                   class="form-control" name="" id="" min="0" ng-model="vmAnnouncement.announcementForm.durationHour">
+                                        </div>
+                                        <br />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <center>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="button" class="btn btn-warning" 
+                                                data-dismiss="modal" ng-click="vmAnnouncement.closeModalOnClick()">Close</button>
+                                    </center>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" ng-repeat="announcement in vmAnnouncement.announcements">
                         <hr />
                         <div class="col-md-2">
                             <div class="">
@@ -96,37 +139,14 @@
                         </div>
 
                         <div class="col-md-10">
-                            <h3>Announcement Title</h3>
-                            <p>
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                            </p>
-                            <button class="btn btn-warning"><span class="glyphicon-pencil"></span> Edit</button>
-                            <button class="btn btn-danger"><span class="glyphicon-minus"></span> Delete</button>
+                            <h3 ng-bind="announcement.title"></h3>
+                            <p ng-bind="announcement.description"></p>
+                            <button class="btn btn-warning" ng-click="vmAnnouncement.announcementOnClick(2, announcement.id)">
+                                <span class="glyphicon-pencil"></span> Edit
+                            </button>
+                            <button class="btn btn-danger" ng-click="vmAnnouncement.announcementOnClick(3, announcement.id)"><span class="glyphicon-minus"></span> Delete</button>
                         </div>
                     </div>
-
-                    <div class="col-md-12">
-                        <hr />
-                        <div class="col-md-2">
-                            <div class="">
-                                <img src="~/images/childrens-park-646x401.jpg" alt="" style="height:100px; width:100px; margin-top:25px">
-                            </div>
-                        </div>
-
-                        <div class="col-md-10">
-                            <h3>Announcement Title</h3>
-                            <p>
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                            </p>
-                            <button class="btn btn-warning"><span class="glyphicon-pencil"></span> Edit</button>
-                            <button class="btn btn-danger"><span class="glyphicon-minus"></span> Delete</button>
-                        </div>
-                    </div>
-
                 </div>
 
 
@@ -256,10 +276,63 @@
                 </div>
 
                 <!--///////////////////////////HISTORY//////////////////////////////////-->
-                <div class="bhoechie-tab-content">
+                <div class="bhoechie-tab-content" ng-controller="HistoryController as vmHistory">
                     <h3>History Maintenance</h3>
                     <div class="col-md-offset-11">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#history_modal"><span class="glyphicon-plus"> Add</span></button>
+                        <button class="btn btn-primary" ng-click="vmHistory.toggleHistoryFormOnClick(vmHistory.isToggled)"><span class="glyphicon-plus"> 
+                            <span ng-bind="vmHistory.toggleMessage"></span></span></button>
+                    </div>
+
+                    <div class="col-md-12" id="history_div">
+                        <hr />
+                        <h3><span class="ace-icon fa fa-glass"></span>History Informations</h3>
+
+
+
+                        <section id="contact-section" style="padding:0px">
+                            <div class="block">
+                                <div class="contact-form">
+                                    <form id="contact-form" method="post" action="" role="form">
+
+                                        <div class="form-group">
+                                            <input type="text" placeholder="History Title" class="form-control" name="" id="">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" placeholder="Place" class="form-control" name="" id="">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <textarea rows="6" placeholder="Description" class="form-control" name="" id=""></textarea>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <label>Date:</label>
+                                            <div class="row">
+                                                <div class="col-xs-8 col-sm-11">
+                                                    <div class="col-md-3">
+                                                        <input type="date" placeholder="Year" class="form-control" name="" id="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-12">
+                                            <label for="exampleInputFile">Choose Image</label>
+                                            <div class="form-group">
+                                                <input type="file" id="exampleInputFile">
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </section>
+                        <hr />
                     </div>
 
                     <div class="col-md-12">
@@ -438,7 +511,7 @@
 
                                 <div>
                                     <center>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="" class="btn btn-primary">Save</button>
                                         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
                                     </center>
                                 </div>
