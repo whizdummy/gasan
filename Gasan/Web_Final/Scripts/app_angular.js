@@ -44,6 +44,42 @@ app.service('divService', function () {
     }
 });
 
+app.service('missionVisionService', function ($http, $q, appSettings) {
+    var deferred;
+
+    this.getMunicipalityDetails = function () {
+        deferred = $q.defer();
+
+        $http.get(appSettings.BASE_URL + "api/v1/municipalities")
+        .then(function (response) {
+            deferred.resolve(response.data);
+        }, function (response) {
+            deferred.reject(response);
+        });
+
+        return deferred.promise;
+    }
+
+    this.updateMunicipalityDetails = function (municipalityDetails) {
+        deferred = $q.defer();
+
+        $http({
+            url: appSettings.BASE_URL + 'api/v1/municipalities/' + municipalityDetails.municipality_id + '?is_mission=' + municipalityDetails.is_mission_flag,
+            method: 'PUT',
+            data: $.param(municipalityDetails),
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
+        }).then(function (response) {
+            deferred.resolve(response.data);
+        }, function (responseError) {
+            deferred.reject(responseError);
+        });
+
+        return deferred.promise;
+    }
+});
+
 app.service('municipalityService', function () {
     var municipality = {};
 

@@ -1,24 +1,25 @@
-﻿app.controller('MissionVisionController', function ($http, appSettings, divService) {
+﻿app.controller('MissionVisionController', function (divService, missionVisionService) {
     var vm = this;
 
     divService.setDivName('#mission_vision_div');
-    divService.hideDiv();
 
-    $http.get(appSettings.BASE_URL + "api/v1/municipalities")
+    missionVisionService
+        .getMunicipalityDetails()
         .then(function (response) {
-            var municipalityDetails = response.data.municipality_details;
+            var municipalityDetails = response.data;
 
             vm.municipalityID = municipalityDetails.id;
             vm.missionDetails = municipalityDetails.mission;
             vm.visionDetails = municipalityDetails.vision;
-        }, function (response) {
+        }, function (responseError) {
             alert('An error occurred!');
         });
 
     vm.editMissionOnClick = function (missionVisionFlag) {
-        $http.get(appSettings.BASE_URL + "api/v1/municipalities?missionVisionFlag=" + missionVisionFlag)
+        missionVisionService
+            .getMunicipalityDetails()
             .then(function (response) {
-                var municipalityDetails = response.data.municipality_details;
+                var municipalityDetails = response.data;
 
                 vm.missionVisionDescription = '';
 
@@ -33,11 +34,11 @@
 
                     vm.missionVisionDescription = municipalityDetails.vision;
                 }
-            }, function (response) {
+            }, function (responseError) {
                 alert('An error occurred!');
             });
 
-        $("#mission_vision_div").slideDown();
+        divService.openDiv();
     };
 
     vm.saveMissionVisionOnSubmit = function (isMissionFlag) {
@@ -45,31 +46,30 @@
 
         missionVisionButton.disabled = true;
 
-        $http({
-            url: appSettings.BASE_URL + 'api/v1/municipalities/' + vm.municipalityID + '?is_mission=' + isMissionFlag,
-            method: 'PUT',
-            data: $.param({
-                mission: vm.missionVisionDescription,
-                vision: vm.missionVisionDescription
-            }),
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            }
-        }).then(function (response) {
-            var municipalityDetails = response.data;
+        var missionVisionDetails = {
+            municipality_id:    vm.municipalityID,
+            mission:            vm.missionVisionDescription,
+            vision:             vm.missionVisionDescription,
+            is_mission_flag:    isMissionFlag
+        };
 
-            if (municipalityDetails.status == 'S') {
-                vm.missionDetails = municipalityDetails.data.mission;
-                vm.visionDetails = municipalityDetails.data.vision;
+        missionVisionService
+            .updateMunicipalityDetails(missionVisionDetails)
+            .then(function (response) {
+                var municipalityDetails = response.data;
 
-                alert(municipalityDetails.message);
+                if (response.status == 'S') {
+                    vm.missionDetails = municipalityDetails.mission;
+                    vm.visionDetails = municipalityDetails.vision;
 
-                missionVisionButton.disabled = false;
-                divService.closeDiv();
-            }
-        }, function(response) {
-            alert("An error occurred!");
-        });
+                    missionVisionButton.disabled = false;
+                    divService.closeDiv();
+                }
+
+                alert(response.message);
+            }, function (responseError) {
+                alert('An error occurred!');
+            });
     }
 
     vm.closeMissionVisionOnClick = function () {

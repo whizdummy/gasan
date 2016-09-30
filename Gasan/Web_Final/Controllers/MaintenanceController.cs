@@ -12,24 +12,6 @@ namespace Web_Final.Controllers
         // GET: Maintenance
         public ActionResult Index()
         {
-            //Int32 adminID = Convert.ToInt32(Session["AdminID"].ToString());
-
-            GasanDataEntities gasanEntity = new GasanDataEntities();
-
-            var queryResult = (from mun in gasanEntity.Municipalities
-                               join munAdm in gasanEntity.Municipality_Admin
-                               on mun.MunicipalityID equals munAdm.MunicipalityID
-                               where munAdm.AdminID == 1
-                               select new
-                               {
-                                   MunicipalityID   = mun.MunicipalityID,
-                                   Mission          = mun.Mission,
-                                   Vision           = mun.Vision
-                               }).First();
-
-            ViewData["Mission"] = queryResult.Mission;
-            ViewData["Vision"]  = queryResult.Vision;
-
             return View();
         }
 
