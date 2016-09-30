@@ -17,7 +17,8 @@ namespace Web_Final
                         "~/Scripts/mission_vision_angular.js",
                         "~/Scripts/logo_angular.js",
                         "~/Scripts/history_angular.js",
-                        "~/Scripts/announcement_angular.js"));
+                        "~/Scripts/announcement_angular.js",
+                        "~/Scripts/event_angular.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

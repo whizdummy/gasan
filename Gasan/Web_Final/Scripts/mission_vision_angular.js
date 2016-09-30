@@ -1,7 +1,8 @@
-﻿app.controller('MissionVisionController', function ($http, appSettings) {
+﻿app.controller('MissionVisionController', function ($http, appSettings, divService) {
     var vm = this;
 
-    $('#mission_vision_div').hide();
+    divService.setDivName('#mission_vision_div');
+    divService.hideDiv();
 
     $http.get(appSettings.BASE_URL + "api/v1/municipalities")
         .then(function (response) {
@@ -15,8 +16,6 @@
         });
 
     vm.editMissionOnClick = function (missionVisionFlag) {
-        console.log(missionVisionFlag);
-        
         $http.get(appSettings.BASE_URL + "api/v1/municipalities?missionVisionFlag=" + missionVisionFlag)
             .then(function (response) {
                 var municipalityDetails = response.data.municipality_details;
@@ -38,10 +37,14 @@
                 alert('An error occurred!');
             });
 
-        $("#mission_vision_div").fadeIn();
+        $("#mission_vision_div").slideDown();
     };
 
-    vm.saveMissionVisionOnClick = function (isMissionFlag) {
+    vm.saveMissionVisionOnSubmit = function (isMissionFlag) {
+        var missionVisionButton = document.getElementById('btn-save-mission-vision');
+
+        missionVisionButton.disabled = true;
+
         $http({
             url: appSettings.BASE_URL + 'api/v1/municipalities/' + vm.municipalityID + '?is_mission=' + isMissionFlag,
             method: 'PUT',
@@ -55,16 +58,21 @@
         }).then(function (response) {
             var municipalityDetails = response.data;
 
-            alert(municipalityDetails.message);
-
             if (municipalityDetails.status == 'S') {
                 vm.missionDetails = municipalityDetails.data.mission;
                 vm.visionDetails = municipalityDetails.data.vision;
-            }
 
-            $("#mission_vision_div").fadeOut();
+                alert(municipalityDetails.message);
+
+                missionVisionButton.disabled = false;
+                divService.closeDiv();
+            }
         }, function(response) {
             alert("An error occurred!");
         });
+    }
+
+    vm.closeMissionVisionOnClick = function () {
+        divService.closeDiv();
     }
 });

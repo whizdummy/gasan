@@ -44,13 +44,21 @@
                         <hr />
 
                         <div class="col-md-10" id="mission_vision_div">
-                            <h3>
-                                <span ng-bind="vmMissionVision.missionVisionTitle"></span>
-                            </h3>
-                            <div class="form-group">
-                                <textarea rows="6" placeholder="Description" class="form-control" name="" ng-model="vmMissionVision.missionVisionDescription" ng-bind="vmMissionVision.missionVisionDescription"></textarea>
-                            </div>
-                            <button class="btn btn-primary asd" id="btnMS_Save" ng-click="vmMissionVision.saveMissionVisionOnClick(vmMissionVision.isMission)"><span class="glyphicon-check"></span> Save</button>                            
+                            <form ng-submit="vmMissionVision.saveMissionVisionOnSubmit(vmMissionVision.isMission)">
+                                <h3>
+                                    <span ng-bind="vmMissionVision.missionVisionTitle"></span> <span style="color: red;">*</span>
+                                </h3>
+                                <div class="form-group">
+                                    <textarea rows="6"
+                                              required="required"
+                                              placeholder="Description"
+                                              class="form-control"
+                                              ng-model="vmMissionVision.missionVisionDescription"
+                                              ng-bind="vmMissionVision.missionVisionDescription"></textarea>
+                                </div>
+                                <button class="btn btn-primary" id="btn-save-mission-vision"><span class="glyphicon-check"></span> Save</button>
+                                <button class="btn btn-danger" type="button" ng-click="vmMissionVision.closeMissionVisionOnClick()">Close</button>
+                            </form>                      
                         </div>
                     </div>
                          
@@ -151,10 +159,10 @@
 
 
                 <!--///////////////////////////EVENTS//////////////////////////////////-->
-                <div class="bhoechie-tab-content" ng-click="EventController as vmEvent">
+                <div class="bhoechie-tab-content" ng-controller="EventController as vmEvent">
                     <h3>Events Maintenance</h3>
                     <div class="col-md-offset-11">
-                        <button class="btn btn-primary" ng-click="vmEvent.eventOnClick(1, )"><span class="glyphicon-plus"> Add</span></button>
+                        <button class="btn btn-primary" ><span class="glyphicon-plus"> Add</span></button>
                     </div>
 
                     <div class="col-md-12">

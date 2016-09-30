@@ -1,7 +1,7 @@
 ﻿var app = angular.module('gasanApp', []);
 
 app.constant('appSettings', {
-    BASE_URL: 'http://192.168.254.103/gasan_api/'
+    BASE_URL: 'http://192.168.254.103:8080/gasan_api/'
 });
 
 app.directive('fileModel', ['$parse', function ($parse) {
@@ -19,6 +19,30 @@ app.directive('fileModel', ['$parse', function ($parse) {
         }
     };
 }]);
+
+app.service('divService', function () {
+    var divName;
+
+    this.setDivName = function (divName) {
+        this.divName = divName;
+    }
+
+    this.getDivName = function () {
+        return this.divName;
+    }
+
+    this.hideDiv = function () {
+        $(this.divName).hide();
+    }
+
+    this.openDiv = function () {
+        $(this.divName).slideDown();
+    }
+
+    this.closeDiv = function () {
+        $(this.divName).slideUp();
+    }
+});
 
 app.service('municipalityService', function () {
     var municipality = {};

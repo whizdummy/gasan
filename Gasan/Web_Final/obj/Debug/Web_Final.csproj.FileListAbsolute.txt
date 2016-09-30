@@ -249,7 +249,6 @@ C:\Users\djfable02\Desktop\gasan\Gasan\Web_Final\bin\System.Web.Http.WebHost.dll
 C:\Users\djfable02\Desktop\gasan\Gasan\Web_Final\bin\System.Net.Http.Formatting.xml
 C:\Users\djfable02\Desktop\gasan\Gasan\Web_Final\bin\System.Web.Http.xml
 C:\Users\djfable02\Desktop\gasan\Gasan\Web_Final\bin\System.Web.Http.WebHost.xml
-C:\Users\djfable02\Desktop\gasan\Gasan\Web_Final\obj\Debug\Web_Final.csprojResolveAssemblyReference.cache
 C:\Users\djfable02\Desktop\gasan\Gasan\Web_Final\bin\System.Web.Cors.dll
 C:\Users\djfable02\Desktop\gasan\Gasan\Web_Final\bin\System.Web.Http.Cors.dll
 C:\Users\djfable02\Desktop\gasan\Gasan\Web_Final\bin\System.Web.Http.Cors.xml
