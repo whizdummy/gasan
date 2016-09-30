@@ -1,7 +1,7 @@
 ﻿var app = angular.module('gasanApp', []);
 
 app.constant('appSettings', {
-    BASE_URL: 'http://192.168.43.79/gasan_api/'
+    BASE_URL: 'http://192.168.254.103/gasan_api/'
 });
 
 app.directive('fileModel', ['$parse', function ($parse) {

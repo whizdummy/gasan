@@ -151,10 +151,10 @@
 
 
                 <!--///////////////////////////EVENTS//////////////////////////////////-->
-                <div class="bhoechie-tab-content">
+                <div class="bhoechie-tab-content" ng-click="EventController as vmEvent">
                     <h3>Events Maintenance</h3>
                     <div class="col-md-offset-11">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#event_modal"><span class="glyphicon-plus"> Add</span></button>
+                        <button class="btn btn-primary" ng-click="vmEvent.eventOnClick(1, )"><span class="glyphicon-plus"> Add</span></button>
                     </div>
 
                     <div class="col-md-12">
