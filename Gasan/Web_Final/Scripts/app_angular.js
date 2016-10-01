@@ -1,7 +1,8 @@
 ﻿var app = angular.module('gasanApp', []);
 
 app.constant('appSettings', {
-    BASE_URL: 'http://192.168.254.103:8080/gasan_api/'
+    BASE_URL:   'http://192.168.254.103:8080/gasan_api/',
+    IMAGE_PATH: 'public/images/'
 });
 
 app.directive('fileModel', ['$parse', function ($parse) {
@@ -19,6 +20,23 @@ app.directive('fileModel', ['$parse', function ($parse) {
         }
     };
 }]);
+
+app.service('logoService', function ($http, $q, appSettings) {
+    var deferred;
+
+    this.getLogoDetails = function () {
+        deferred = $q.defer();
+
+        $http.get(appSettings.BASE_URL + 'api/v1/logos')
+            .then(function (response) {
+                deferred.resolve(response.data);
+            }, function (responseError) {
+                deferred.reject(responseError);
+            });
+
+        return deferred.promise;
+    }
+});
 
 app.service('missionVisionService', function ($http, $q, appSettings) {
     var deferred;

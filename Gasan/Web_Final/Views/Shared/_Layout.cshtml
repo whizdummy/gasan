@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/angular-main")
+    @Scripts.Render("~/bundles/angular-maintenance")
 </head>
-<body>
+<body ng-app="gasanApp">
 
     <header id="top-bar" class="navbar-fixed-top animated-header">
         <div class="container">
@@ -22,9 +25,9 @@
                 </button>
                 <!-- /responsive nav button -->
                 <!-- logo -->
-                <div class="navbar-brand">
+                <div class="navbar-brand" ng-controller="LogoController as vmLogo">
                     <a href="/">
-                        <img src="../images/gasan_logo.png" alt="" style="height:50px;margin-top:-20%">
+                        <img id="municipality-logo" class="img-circle" alt="No Image" style="height:50px;margin-top:-20%">
                     </a>
                 </div>
                 <!-- /logo -->
