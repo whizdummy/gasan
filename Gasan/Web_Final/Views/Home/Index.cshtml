@@ -4,6 +4,7 @@
 }
 
 @Scripts.Render("~/bundles/angular")
+@Scripts.Render("~/bundles/angular-main")
 
 <section id="about" ng-app="gasanApp">
     <div class="container">
@@ -78,7 +79,7 @@
                     <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="1000ms">
                         <h2>Mission</h2>
                         <p>
-                           <span ng-bind="vmMissionVision.missionDetails"></span>
+                           <span ng-bind="vmMissionVision.missionDetails">---</span>
                         </p>                      
                     </div>
                 </div>
@@ -87,7 +88,7 @@
                     <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="1000ms">
                         <h2>Vision</h2>
                         <p>
-                            <span ng-bind="vmMissionVision.visionDetails"></span>
+                            <span ng-bind="vmMissionVision.visionDetails">---</span>
                         </p>
                     </div>
                 </div>
