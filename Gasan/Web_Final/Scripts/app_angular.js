@@ -147,7 +147,9 @@ app.service('announcementService', function ($http, $q, appSettings) {
             url: appSettings.BASE_URL + 'api/v1/announcements/' + id,
             method: 'PUT',
             data: announcementDetails,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
         }).then(function (response) {
             deferred.resolve(response.data);
         }, function (responseError) {
@@ -165,12 +167,8 @@ app.service('announcementService', function ($http, $q, appSettings) {
             method: 'DELETE'
         })
         .then(function (response) {
-            alert(response.data.message);
-
             deferred.resolve(response.data);
         }, function (responseError) {
-            alert('An error occurred!');
-            
             deferred.reject(responseError);
         });
 

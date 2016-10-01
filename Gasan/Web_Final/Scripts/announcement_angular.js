@@ -1,9 +1,10 @@
-﻿app.controller("AnnouncementController", function ($http, appSettings, announcementService) {
+﻿app.controller("AnnouncementController", function (announcementService, divService) {
     var vm = this;
 
     vm.announcementForm = {};
 
-    $('#announcement_div').hide();
+    divService.setDivName('#announcement_div');
+    divService.hideDiv();
 
     var loadAssignments = function () {
         announcementService.getAnnouncements()
@@ -19,51 +20,58 @@
     vm.announcementOnClick = function (buttonType, id) {
         vm.buttonType = buttonType;
 
+        vm.announcementForm = {};
+
         switch (buttonType) {
+            // Add
             case 1:
-                $('#announcement_div').slideDown();
+                divService.openDiv();
                 break;
 
+            // Edit
             case 2:
                 announcementService.getAnnouncement(id)
                     .then(function(response) {
                         var announcementDetails = response.data;
                         var durationDay = announcementDetails.duration / 24;
 
-                        vm.announcementForm.announcementId = announcementDetails.id;
-                        vm.announcementForm.title = announcementDetails.title;
-                        vm.announcementForm.description = announcementDetails.description;
-                        vm.announcementForm.durationDay = parseInt(durationDay, 10);
-                        vm.announcementForm.durationHour = parseInt(announcementDetails.duration - (24 * vm.durationDay), 10);
+                        vm.announcementForm.announcementId  = announcementDetails.id;
+                        vm.announcementForm.title           = announcementDetails.title;
+                        vm.announcementForm.description     = announcementDetails.description;
+                        vm.announcementForm.durationDay     = parseInt(durationDay, 10);
+                        vm.announcementForm.durationHour    = parseInt(announcementDetails.duration - (24 * vm.announcementForm.durationDay), 10);
 
-                        $('#announcement_div').slideDown();
+                        divService.openDiv();
                     }, function (responseError) {
                         alert(responseError);
                     });
                 break;
+            // Delete
             case 3:
                 announcementService.deleteAnnouncement(id)
                     .then(function (response) {
+                        alert(response.message);
+
                         loadAssignments();
                     }, function (responseError) {
                         alert('An error occurred');
                     });
                 break;
             default:
-                alert('Engg!');
+                alert('Invalid button type!');
                 break;
         }
     };
 
-    vm.closeModalOnClick = function () {
-        $('#announcement_div').slideUp();
+    vm.closeDivOnClick = function () {
+        divService.closeDiv();
     }
 
     vm.announcementOnSubmit = function (announcementId, submitType) {
         var announcementDetailsObject = $.param({
-            'title': vm.announcementForm.title,
-            'description': vm.announcementForm.description,
-            'duration': (vm.announcementForm.durationDay * 24) + vm.announcementForm.durationHour
+            'title':        vm.announcementForm.title,
+            'description':  vm.announcementForm.description,
+            'duration':     (vm.announcementForm.durationDay * 24) + vm.announcementForm.durationHour
         });
 
         // Add
@@ -72,7 +80,7 @@
                 .then(function (response) {
                     alert(response.message);
 
-                    vm.closeModalOnClick();
+                    divService.closeDiv();
                     loadAssignments();
                 }, function (responseError) {
                     alert('An error occurred');
@@ -83,7 +91,7 @@
                 .then(function(response) {
                     alert(response.message);
 
-                    vm.closeModalOnClick();
+                    divService.closeDiv();
                     loadAssignments();
                 }, function(responseError) {
                     alert('An error occurred');   

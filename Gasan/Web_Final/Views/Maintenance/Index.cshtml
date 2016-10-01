@@ -103,7 +103,8 @@
 
                                 <div class="form-group">
                                     <input type="text" placeholder="Announcement Title" 
-                                           class="form-control" name="" id="" ng-model="vmAnnouncement.announcementForm.title">
+                                           class="form-control" ng-model="vmAnnouncement.announcementForm.title"
+                                           required="required">
                                 </div>
 
                                 <div class="form-group">
@@ -116,23 +117,23 @@
                                     <div class="form-group">
                                         <div class="col-md-3">
                                             <input type="number" placeholder="Day(s)" 
-                                                   class="form-control" name="" id="" min="0" ng-model="vmAnnouncement.announcementForm.durationDay">
+                                                   class="form-control" name="" id="" min="0" ng-model="vmAnnouncement.announcementForm.durationDay" 
+                                                   required="required">
                                         </div>
 
                                         <div class="col-md-3">
                                             <input type="number" placeholder="Hours(s)" 
-                                                   class="form-control" name="" id="" min="0" ng-model="vmAnnouncement.announcementForm.durationHour">
+                                                   class="form-control" name="" id="" min="0" ng-model="vmAnnouncement.announcementForm.durationHour"
+                                                   required="required">
                                         </div>
                                         <br />
                                     </div>
                                 </div>
 
                                 <div>
-                                    <center>
-                                        <button type="submit" class="btn btn-primary">Save</button>
-                                        <button type="button" class="btn btn-warning" 
-                                                data-dismiss="modal" ng-click="vmAnnouncement.closeModalOnClick()">Close</button>
-                                    </center>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <button type="button" class="btn btn-danger" 
+                                            data-dismiss="modal" ng-click="vmAnnouncement.closeDivOnClick()">Close</button>
                                 </div>
                             </form>
                         </div>
