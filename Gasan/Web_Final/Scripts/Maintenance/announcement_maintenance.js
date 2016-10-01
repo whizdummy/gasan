@@ -1,4 +1,4 @@
-﻿app.controller("AnnouncementController", function (announcementService, divService) {
+﻿app.controller("AnnouncementMaintenanceController", function (announcementService, divService) {
     var vm = this;
 
     vm.announcementForm = {};

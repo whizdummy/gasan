@@ -341,7 +341,7 @@
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\announcement_angular.js" />
+    <Content Include="Scripts\Maintenance\announcement_maintenance.js" />
     <Content Include="Scripts\app_angular.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -360,10 +360,10 @@
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\daterangepicker.min.js" />
-    <Content Include="Scripts\event_angular.js" />
+    <Content Include="Scripts\Maintenance\event_maintenance.js" />
     <Content Include="Scripts\fileinput.js" />
     <Content Include="Scripts\fileinput.min.js" />
-    <Content Include="Scripts\history_angular.js" />
+    <Content Include="Scripts\Maintenance\history_maintenance.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -374,9 +374,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\logo_angular.js" />
+    <Content Include="Scripts\Maintenance\logo_maintenance.js" />
     <Content Include="Scripts\main.js" />
-    <Content Include="Scripts\mission_vision_angular.js" />
+    <Content Include="Scripts\Maintenance\mission_vision_maintenance.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.6.2.min.js" />
     <Content Include="Scripts\owl.carousel.min.js" />

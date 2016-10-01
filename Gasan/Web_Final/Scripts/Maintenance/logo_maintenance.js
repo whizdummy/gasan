@@ -1,4 +1,4 @@
-﻿app.controller('LogoController', function ($http, appSettings, fileUpload, municipalityService) {
+﻿app.controller('LogoMaintenanceController', function ($http, appSettings, fileUpload, municipalityService) {
     var vm = this;
 
     $(document).ready(function () {

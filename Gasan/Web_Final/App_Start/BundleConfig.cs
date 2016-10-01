@@ -12,13 +12,15 @@ namespace Web_Final
                         "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                        "~/Scripts/angular.min.js",
-                        "~/Scripts/app_angular.js",
-                        "~/Scripts/mission_vision_angular.js",
-                        "~/Scripts/logo_angular.js",
-                        "~/Scripts/history_angular.js",
-                        "~/Scripts/announcement_angular.js",
-                        "~/Scripts/event_angular.js"));
+                    "~/Scripts/angular.min.js",
+                    "~/Scripts/app_angular.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angular-maintenance").Include(
+                        "~/Scripts/Maintenance/mission_vision_maintenance.js",
+                        "~/Scripts/Maintenance/logo_maintenance.js",
+                        "~/Scripts/Maintenance/history_maintenance.js",
+                        "~/Scripts/Maintenance/announcement_maintenance.js",
+                        "~/Scripts/Maintenance/event_maintenance.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

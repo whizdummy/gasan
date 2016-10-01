@@ -1,4 +1,4 @@
-﻿app.controller('HistoryController', function ($http, appSettings) {
+﻿app.controller('HistoryMaintenanceController', function ($http, appSettings) {
     var vm = this;
     vm.isToggled = false;
     vm.toggleMessage = "Add";

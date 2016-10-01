@@ -1,15 +1,3 @@
-$(document).ready(function () {
-    $("#mission_vision_div").hide();
-
-    $("#btnMS_Save").click(function () {
-        $("#mission_vision_div").hide();
-    });
-
-    $("#btnMS_Edit").click(function () {
-        $("#mission_vision_div").show();
-    });
-});
-
 (function ($) {
     $.fn.scrollingTo = function( opts ) {
         var defaults = {

@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "Maintenance";
 }
+
 @Scripts.Render("~/bundles/angular")
+@Scripts.Render("~/bundles/angular-maintenance")
 
 <div class="container" ng-app="gasanApp">
     <div class="row">
@@ -38,7 +40,7 @@
             <div class="col-md-10 bhoechie-tab">
 
                 <!--///////////////////////////MISSION/VISION//////////////////////////////////-->
-                <div class="bhoechie-tab-content active" ng-controller="MissionVisionController as vmMissionVision">
+                <div class="bhoechie-tab-content active" ng-controller="MissionVisionMaintenanceController as vmMissionVision">
                     <h3>Mission/Vision Maintenance</h3>               
                     <div class="col-md-12">
                         <hr />
@@ -89,7 +91,7 @@
 
 
                 <!--///////////////////////////ANNOUNCEMENTS//////////////////////////////////-->
-                <div class="bhoechie-tab-content" ng-controller="AnnouncementController as vmAnnouncement">
+                <div class="bhoechie-tab-content" ng-controller="AnnouncementMaintenanceController as vmAnnouncement">
                     <h3>Announcement Maintenance</h3>
                     <div class="col-md-offset-11">
                         <button class="btn btn-primary" ng-click="vmAnnouncement.announcementOnClick(1, announcement.id)"><span class="glyphicon-plus"> Add</span></button>
@@ -160,7 +162,7 @@
 
 
                 <!--///////////////////////////EVENTS//////////////////////////////////-->
-                <div class="bhoechie-tab-content" ng-controller="EventController as vmEvent">
+                <div class="bhoechie-tab-content" ng-controller="EventMaintenanceController as vmEvent">
                     <h3>Events Maintenance</h3>
                     <div class="col-md-offset-11">
                         <button class="btn btn-primary" ><span class="glyphicon-plus"> Add</span></button>
@@ -285,7 +287,7 @@
                 </div>
 
                 <!--///////////////////////////HISTORY//////////////////////////////////-->
-                <div class="bhoechie-tab-content" ng-controller="HistoryController as vmHistory">
+                <div class="bhoechie-tab-content" ng-controller="HistoryMaintenanceController as vmHistory">
                     <h3>History Maintenance</h3>
                     <div class="col-md-offset-11">
                         <button class="btn btn-primary" ng-click="vmHistory.toggleHistoryFormOnClick(vmHistory.isToggled)"><span class="glyphicon-plus"> 
@@ -388,7 +390,7 @@
                 </div>
 
                 <!--///////////////////////////LOGO//////////////////////////////////-->
-                <div class="bhoechie-tab-content" ng-controller="LogoController as vmLogo">
+                <div class="bhoechie-tab-content" ng-controller="LogoMaintenanceController as vmLogo">
                     <h3>Logo Maintenance</h3>
                     <div class="col-md-12" id="logo_div">
                         <hr />

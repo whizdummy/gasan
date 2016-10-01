@@ -1,4 +1,4 @@
-﻿app.controller('MissionVisionController', function (divService, missionVisionService) {
+﻿app.controller('MissionVisionMaintenanceController', function (divService, missionVisionService) {
     var vm = this;
 
     divService.setDivName('#mission_vision_div');
