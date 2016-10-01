@@ -115,6 +115,19 @@ app.service('announcementService', function ($http, $q, appSettings) {
         return deferred.promise;
     }
 
+    this.getNAnnouncements = function (n) {
+        deferred = $q.defer();
+
+        $http.get(appSettings.BASE_URL + 'api/v1/announcements?is_lapsed=0&take_number=' + n)
+            .then(function (response) {
+                deferred.resolve(response.data);
+            }, function (errorResponse) {
+                deferred.reject(errorResponse);
+            });
+
+        return deferred.promise;
+    }
+
     this.addAnnouncement = function (announcementDetails) {
         deferred = $q.defer();
 

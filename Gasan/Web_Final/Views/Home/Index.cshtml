@@ -96,16 +96,15 @@
 
             <div class="col-md-6">
 
-                <div class="col-md-12">
+                <div class="col-md-12" ng-controller="AnnouncementController as vmAnnouncement">
                     <section class="about-feature clearfix">
                         <div class="container-fluid">
                             <div class="about-feature-3 wow fadeInDown col-md" data-wow-duration="1000ms" data-wow-delay=".7s" style="padding:20px">
                                 <h2 class="item_title">
-                                    Announcements
+                                    Announcement
                                 </h2>
-                                <p>
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.
-                                </p>
+                                <h3 ng-bind="vmAnnouncement.announcementTitle">---</h3>
+                                <p ng-bind="vmAnnouncement.announcementDesc">---</p>
 
                                 <div class="blog-content col-md-offset-8">
                                     <button class="btn btn-primary">Continue Reading</button>
@@ -120,8 +119,9 @@
                         <div class="container-fluid">
                             <div class="about-feature-3 wow fadeInDown col-md" data-wow-duration="1000ms" data-wow-delay=".7s" style="padding:20px">
                                 <h2 class="item_title">
-                                    Up Comming Events
+                                    Upcoming Event
                                 </h2>
+                                <h3>Title</h3>
                                 <p>
                                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.
                                 </p>
