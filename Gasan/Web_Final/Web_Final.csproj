@@ -377,6 +377,7 @@
     <Content Include="Scripts\Maintenance\logo_maintenance.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\Maintenance\mission_vision_maintenance.js" />
+    <Content Include="Scripts\Main\announcement_main.js" />
     <Content Include="Scripts\Main\logo_main.js" />
     <Content Include="Scripts\Main\mission_vision_main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />

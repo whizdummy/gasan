@@ -89,10 +89,10 @@ app.service('municipalityService', function () {
 app.service('announcementService', function ($http, $q, appSettings) {
     var deferred;
 
-    this.getAnnouncements = function () {
+    this.getAnnouncements = function (isLapsed) {
         deferred = $q.defer();
 
-        $http.get(appSettings.BASE_URL + 'api/v1/announcements')
+        $http.get(appSettings.BASE_URL + 'api/v1/announcements?is_lapsed=' + isLapsed)
             .then(function (response) {
                 deferred.resolve(response.data);
             }, function (errorResponse) {
