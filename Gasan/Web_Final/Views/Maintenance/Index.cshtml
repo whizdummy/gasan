@@ -59,7 +59,7 @@
                                               ng-bind="vmMissionVision.missionVisionDescription"></textarea>
                                 </div>
                                 <button class="btn btn-primary" id="btn-save-mission-vision"><span class="glyphicon-check"></span> Save</button>
-                                <button class="btn btn-danger" type="button" ng-click="vmMissionVision.closeMissionVisionOnClick()">Close</button>
+                                <button class="btn btn-danger" id="btn-close-mission-vision" type="button" ng-click="vmMissionVision.closeMissionVisionOnClick()">Close</button>
                             </form>                      
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                             <p id="mission_details">
                                 <span ng-bind="vmMissionVision.missionDetails"></span>
                             </p>                            
-                            <button class="btn btn-warning" ng-click="vmMissionVision.editMissionOnClick(1)"><span class="glyphicon-pencil"></span> Edit</button>
+                            <button class="btn btn-warning" ng-click="vmMissionVision.editMissionOnClick(1)" id="btn-mission-edit"><span class="glyphicon-pencil"></span> Edit</button>
                         </div>
                     </div>
 
@@ -83,7 +83,7 @@
                             <p id="vision_details">
                                 <span ng-bind="vmMissionVision.visionDetails"></span>
                             </p>                            
-                            <button class="btn btn-warning" ng-click="vmMissionVision.editMissionOnClick(2)"><span class="glyphicon-pencil"></span> Edit</button>
+                            <button class="btn btn-warning btn-mission-vision-edit" ng-click="vmMissionVision.editMissionOnClick(2)" id="btn-vision-edit"><span class="glyphicon-pencil"></span> Edit</button>
                         </div>
                     </div>
 

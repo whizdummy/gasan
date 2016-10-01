@@ -1,16 +1,25 @@
-﻿app.controller('MissionVisionMaintenanceController', function (divService, missionVisionService) {
-    var vm = this;
+﻿app.controller('MissionVisionMaintenanceController', function (missionVisionService) {
+    var vm                      = this;
+    var missionVisionDiv        = $('#mission_vision_div');
+    var missionEditBtn          = document.getElementById('btn-mission-edit');
+    var visionEditBtn           = document.getElementById('btn-vision-edit');
+    var missionVisionCloseBtn   = document.getElementById('btn-close-mission-vision');
 
-    divService.setDivName('#mission_vision_div');
+    missionVisionDiv.hide();
+    missionEditBtn.disabled = true;
+    visionEditBtn.disabled  = true;
 
     missionVisionService
         .getMunicipalityDetails()
         .then(function (response) {
-            var municipalityDetails = response.data;
+            var municipalityDetails         = response.data;
 
-            vm.municipalityID = municipalityDetails.id;
-            vm.missionDetails = municipalityDetails.mission;
-            vm.visionDetails = municipalityDetails.vision;
+            vm.municipalityID               = municipalityDetails.id;
+            vm.missionDetails               = municipalityDetails.mission;
+            vm.visionDetails                = municipalityDetails.vision;
+
+            missionEditBtn.disabled         = false;
+            visionEditBtn.disabled          = false;
         }, function (responseError) {
             alert('An error occurred!');
         });
@@ -28,23 +37,32 @@
                     vm.isMission = 1;
 
                     vm.missionVisionDescription = municipalityDetails.mission;
+
+                    missionEditBtn.disabled = true;
+                    visionEditBtn.disabled  = false;
                 } else {
                     vm.missionVisionTitle = "Vision";
                     vm.isMission = 0;
 
                     vm.missionVisionDescription = municipalityDetails.vision;
+
+                    visionEditBtn.disabled  = true;
+                    missionEditBtn.disabled = false;
                 }
+
+                missionVisionDiv.slideDown();
             }, function (responseError) {
                 alert('An error occurred!');
             });
-
-        divService.openDiv();
     };
 
     vm.saveMissionVisionOnSubmit = function (isMissionFlag) {
         var missionVisionButton = document.getElementById('btn-save-mission-vision');
 
-        missionVisionButton.disabled = true;
+        missionVisionButton.disabled    = true;
+        missionVisionCloseBtn.disabled  = true;
+        missionEditBtn.disabled         = true;
+        visionEditBtn.disabled          = true;
 
         var missionVisionDetails = {
             municipality_id:    vm.municipalityID,
@@ -59,20 +77,27 @@
                 var municipalityDetails = response.data;
 
                 if (response.status == 'S') {
-                    vm.missionDetails = municipalityDetails.mission;
-                    vm.visionDetails = municipalityDetails.vision;
+                    vm.missionDetails               = municipalityDetails.mission;
+                    vm.visionDetails                = municipalityDetails.vision;
 
-                    missionVisionButton.disabled = false;
-                    divService.closeDiv();
+                    missionVisionButton.disabled    = false;
+                    missionVisionCloseBtn.disabled  = false;
+                    missionEditBtn.disabled         = false;
+                    visionEditBtn.disabled          = false;
+
+                    alert(response.message);
+
+                    missionVisionDiv.slideUp();
                 }
-
-                alert(response.message);
             }, function (responseError) {
                 alert('An error occurred!');
             });
     }
 
     vm.closeMissionVisionOnClick = function () {
-        divService.closeDiv();
+        missionVisionDiv.slideUp();
+
+        missionEditBtn.disabled = false;
+        visionEditBtn.disabled  = false;
     }
 });

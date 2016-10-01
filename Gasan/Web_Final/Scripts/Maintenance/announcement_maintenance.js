@@ -1,10 +1,10 @@
-﻿app.controller("AnnouncementMaintenanceController", function (announcementService, divService) {
+﻿app.controller("AnnouncementMaintenanceController", function (announcementService) {
     var vm = this;
+    var announcementDiv = $('#announcement_div');
 
     vm.announcementForm = {};
 
-    divService.setDivName('#announcement_div');
-    divService.hideDiv();
+    announcementDiv.hide();
 
     var loadAssignments = function () {
         announcementService.getAnnouncements()
@@ -25,7 +25,7 @@
         switch (buttonType) {
             // Add
             case 1:
-                divService.openDiv();
+                announcementDiv.slideDown();
                 break;
 
             // Edit
@@ -41,7 +41,7 @@
                         vm.announcementForm.durationDay     = parseInt(durationDay, 10);
                         vm.announcementForm.durationHour    = parseInt(announcementDetails.duration - (24 * vm.announcementForm.durationDay), 10);
 
-                        divService.openDiv();
+                        announcementDiv.slideDown();
                     }, function (responseError) {
                         alert(responseError);
                     });
@@ -64,7 +64,7 @@
     };
 
     vm.closeDivOnClick = function () {
-        divService.closeDiv();
+        announcementDiv.slideUp();
     }
 
     vm.announcementOnSubmit = function (announcementId, submitType) {
@@ -80,7 +80,7 @@
                 .then(function (response) {
                     alert(response.message);
 
-                    divService.closeDiv();
+                    announcementDiv.slideUp();
                     loadAssignments();
                 }, function (responseError) {
                     alert('An error occurred');
@@ -91,7 +91,7 @@
                 .then(function(response) {
                     alert(response.message);
 
-                    divService.closeDiv();
+                    announcementDiv.slideUp();
                     loadAssignments();
                 }, function(responseError) {
                     alert('An error occurred');   

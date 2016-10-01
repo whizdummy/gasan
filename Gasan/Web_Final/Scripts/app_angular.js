@@ -20,30 +20,6 @@ app.directive('fileModel', ['$parse', function ($parse) {
     };
 }]);
 
-app.service('divService', function () {
-    var divName;
-
-    this.setDivName = function (divName) {
-        this.divName = divName;
-    }
-
-    this.getDivName = function () {
-        return this.divName;
-    }
-
-    this.hideDiv = function () {
-        $(this.divName).hide();
-    }
-
-    this.openDiv = function () {
-        $(this.divName).slideDown();
-    }
-
-    this.closeDiv = function () {
-        $(this.divName).slideUp();
-    }
-});
-
 app.service('missionVisionService', function ($http, $q, appSettings) {
     var deferred;
 
