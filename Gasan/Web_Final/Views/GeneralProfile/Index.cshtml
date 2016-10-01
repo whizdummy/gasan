@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "General Profile";
 }
 <div class="container">
     <div class="row">
@@ -115,17 +115,13 @@
                 </div>
 
                 <!--///////////////////////////OFFICIALS//////////////////////////////////-->
-                <div class="bhoechie-tab-content">
+                <div class="bhoechie-tab-content" ng-controller="MissionVisionController as vmMissionVision">
                     <h3>Mission and Vision</h3>                    
                     <div class="col-md-12">
                         <hr />                        
                         <div class="col-md-10">
                             <h3>Mission</h3>                            
-                            <p>
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                            </p>                            
+                            <p ng-bind="vmMissionVision.missionDetails"></p>                            
                         </div>
                     </div>
 
@@ -133,11 +129,7 @@
                         <hr />                        
                         <div class="col-md-10">
                             <h3>Vision</h3>                            
-                            <p>
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                            </p>                            
+                            <p ng-bind="vmMissionVision.visionDetails"></p>                            
                         </div>
                     </div>
                 </div>
