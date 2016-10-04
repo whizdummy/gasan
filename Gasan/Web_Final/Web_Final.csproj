@@ -342,6 +342,7 @@
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app_firebase.js" />
+    <Content Include="Scripts\Config\settings.js" />
     <Content Include="Scripts\firebase.js" />
     <Content Include="Scripts\Maintenance\announcement_maintenance.js" />
     <Content Include="Scripts\app_angular.js" />
