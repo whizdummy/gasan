@@ -10,6 +10,7 @@
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/angular-main")
     @Scripts.Render("~/bundles/angular-maintenance")
+    @Scripts.Render("~/bundles/firebase")
 </head>
 <body ng-app="gasanApp">
 
@@ -48,7 +49,7 @@
                             <div class="dropdown-menu">
                                 <ul>
                                     <li>@Html.ActionLink("Profile", "Index", "Home")</li>
-                                    <li>@Html.ActionLink("Logout", "Index", "Home")</li>
+                                    <li><a href="#" onclick="logoutOnClick()">LOGOUT</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -69,6 +70,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="@Url.Content("/Scripts/Main/admin_account.js")" "></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

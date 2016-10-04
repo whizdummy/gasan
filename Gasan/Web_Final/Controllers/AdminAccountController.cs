@@ -9,8 +9,6 @@ namespace Web_Final.Controllers
 {
     public class AdminAccountController : Controller
     {
-        private const String BASE_URL = "http://localhost:64680/";
-
         // GET: AdminAccount
         public ActionResult Index()
         {
@@ -87,26 +85,6 @@ namespace Web_Final.Controllers
             {
                 return View();
             }
-        }
-
-        [HttpPost]
-        public ActionResult Login(FormCollection collection)
-        {
-
-
-            String username = collection["username"];
-            String password = collection["password"];
-
-            GasanDataEntities gasanEntity = new GasanDataEntities();
-
-            var queryResult = from adm in gasanEntity.Admins
-                              where adm.Username == username
-                              && adm.Password == password
-                              select adm;
-
-            Session["AdminID"] = queryResult.First().AdminID;
-
-            return Redirect("http://" + Request.Url.Authority + "/Maintenance");
         }
     }
 }

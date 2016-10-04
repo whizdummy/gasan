@@ -1,11 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "AdminAccount";    
+    ViewBag.Title = "Admin Login";    
 }
 
-@Scripts.Render("~/bundles/angular")
-
-<div class="col-md-12" style="margin-top:-50px" ng-app="gasanApp" ng-controller="AdminLoginController as vmAdminLogin">
+<div class="col-md-12" style="margin-top:-50px">
     <section class="company-description">
 
         <div class="col-md-12">
@@ -20,14 +18,13 @@
             <section id="contact-section" style="padding:0px">
                 <div class="block">
                     <div class="contact-form">
-                        <form id="contact-form" method="post" action="AdminAccount/Login" role="form">
-
+                        <form id="contact-form" onsubmit="adminLoginOnSubmit()" role="form">
                             <div class="form-group">
-                                <input type="text" placeholder="Username" class="form-control" name="username" id="">
+                                <input type="text" placeholder="Username" class="form-control" name="username" id="username">
                             </div>
 
                             <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control" name="password" id="">
+                                <input type="password" placeholder="Password" class="form-control" name="password" id="password">
                             </div>
                             <center>
                                 <input type="submit" id="contact-submit" class="btn btn-default btn-send" value="Login">
