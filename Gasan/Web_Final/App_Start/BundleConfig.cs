@@ -11,6 +11,10 @@ namespace Web_Final
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/firebase").Include(
+                "~/Scripts/firebase.js",
+                "~/Scripts/app_firebase.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                     "~/Scripts/angular.min.js",
                     "~/Scripts/app_angular.js"));
