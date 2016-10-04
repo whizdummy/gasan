@@ -9,20 +9,20 @@
     missionEditBtn.disabled = true;
     visionEditBtn.disabled  = true;
 
-    missionVisionService
-        .getMunicipalityDetails()
-        .then(function (response) {
-            var municipalityDetails         = response.data;
+    //missionVisionService
+    //    .getMunicipalityDetails()
+    //    .then(function (response) {
+    //        var municipalityDetails         = response.data;
 
-            vm.municipalityID               = municipalityDetails.id;
-            vm.missionDetails               = municipalityDetails.mission;
-            vm.visionDetails                = municipalityDetails.vision;
+    //        vm.municipalityID               = municipalityDetails.id;
+    //        vm.missionDetails               = municipalityDetails.mission;
+    //        vm.visionDetails                = municipalityDetails.vision;
 
-            missionEditBtn.disabled         = false;
-            visionEditBtn.disabled          = false;
-        }, function (responseError) {
-            alert('An error occurred!');
-        });
+    //        missionEditBtn.disabled         = false;
+    //        visionEditBtn.disabled          = false;
+    //    }, function (responseError) {
+    //        alert('An error occurred!');
+    //    });
 
     vm.editMissionOnClick = function (missionVisionFlag) {
         missionVisionService
@@ -65,33 +65,33 @@
         visionEditBtn.disabled          = true;
 
         var missionVisionDetails = {
-            municipality_id:    vm.municipalityID,
             mission:            vm.missionVisionDescription,
-            vision:             vm.missionVisionDescription,
-            is_mission_flag:    isMissionFlag
+            vision:             vm.missionVisionDescription
         };
 
-        missionVisionService
-            .updateMunicipalityDetails(missionVisionDetails)
-            .then(function (response) {
-                var municipalityDetails = response.data;
+        firebase.database().ref('details').update(missionVisionDetails);
 
-                if (response.status == 'S') {
-                    vm.missionDetails               = municipalityDetails.mission;
-                    vm.visionDetails                = municipalityDetails.vision;
+        //missionVisionService
+        //    .updateMunicipalityDetails(missionVisionDetails)
+        //    .then(function (response) {
+        //        var municipalityDetails = response.data;
 
-                    missionVisionButton.disabled    = false;
-                    missionVisionCloseBtn.disabled  = false;
-                    missionEditBtn.disabled         = false;
-                    visionEditBtn.disabled          = false;
+        //        if (response.status == 'S') {
+        //            vm.missionDetails               = municipalityDetails.mission;
+        //            vm.visionDetails                = municipalityDetails.vision;
 
-                    alert(response.message);
+        //            missionVisionButton.disabled    = false;
+        //            missionVisionCloseBtn.disabled  = false;
+        //            missionEditBtn.disabled         = false;
+        //            visionEditBtn.disabled          = false;
 
-                    missionVisionDiv.slideUp();
-                }
-            }, function (responseError) {
-                alert('An error occurred!');
-            });
+        //            alert(response.message);
+
+        //            missionVisionDiv.slideUp();
+        //        }
+        //    }, function (responseError) {
+        //        alert('An error occurred!');
+        //    });
     }
 
     vm.closeMissionVisionOnClick = function () {
