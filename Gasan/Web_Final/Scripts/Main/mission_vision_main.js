@@ -1,14 +1,8 @@
-﻿app.controller('MissionVisionController', function (missionVisionService) {
-    var vm  = this;
+﻿var municipalityRef = firebase.database().ref('details');
+var mission = document.getElementById('mission-details');
+var vision = document.getElementById('vision-details');
 
-    missionVisionService
-        .getMunicipalityDetails()
-        .then(function (response) {
-            var municipalityDetails = response.data;
-
-            vm.missionDetails       = municipalityDetails.mission;
-            vm.visionDetails        = municipalityDetails.vision;
-        }, function (responseError) {
-            alert(responseError.config.url + ": " + responseError.statusText);
-        });
+municipalityRef.on('value', function (data) {
+    mission.innerHTML = data.val().mission;
+    vision.innerHTML = data.val().vision;
 });

@@ -71,26 +71,20 @@
                 </div>
             </div>
             
-            <div class="col-md-6" ng-controller="MissionVisionController as vmMissionVision">
+            <div class="col-md-6">
                 <div class="col-md-12">
                     <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="1000ms">
                         <h2>Mission</h2>
-                        <p>
-                           <span ng-bind="vmMissionVision.missionDetails">---</span>
-                        </p>                      
+                        <p id="mission-details">---</p>                      
                     </div>
                 </div>
 
                 <div class="col-md-12">
                     <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="1000ms">
                         <h2>Vision</h2>
-                        <p>
-                            <span ng-bind="vmMissionVision.visionDetails">---</span>
-                        </p>
+                        <p id="vision-details">---</p>
                     </div>
                 </div>
-
-
             </div>
 
 
@@ -137,4 +131,6 @@
         </div>
     </div>
 </section>
+
+<script src="@Url.Content("/Scripts/Main/mission_vision_main.js")"></script>
 

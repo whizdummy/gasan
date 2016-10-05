@@ -9,7 +9,6 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/firebase")
     @Scripts.Render("~/bundles/angular")
-    @Scripts.Render("~/bundles/angular-main")
     @Scripts.Render("~/bundles/angular-maintenance")
 </head>
 <body ng-app="gasanApp">
@@ -26,7 +25,7 @@
                 </button>
                 <!-- /responsive nav button -->
                 <!-- logo -->
-                <div class="navbar-brand" ng-controller="LogoController as vmLogo">
+                <div class="navbar-brand">
                     <a href="/">
                         <img id="municipality-logo" class="img-circle" alt="No Image" style="height:50px;margin-top:-20%">
                     </a>
@@ -70,6 +69,7 @@
     <script src="@Url.Content("/Scripts/Config/settings.js")"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular-main")
     <script src="@Url.Content("/Scripts/Main/admin_account.js")"></script>
     @RenderSection("scripts", required: false)
 </body>
