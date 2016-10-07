@@ -1,11 +1,19 @@
-﻿app.controller('LogoMaintenanceController', function ($http, appSettings, fileUpload, municipalityService) {
+﻿app.controller('LogoMaintenanceController', function ($http, $timeout, appSettings, fileUpload, municipalityService) {
     var vm = this;
+    var logoInput = document.getElementById('file-0a');
+    var logoDiv = $('#logo_div');
+    var imageRef = firebase.database().ref('details/imageUrl');
+    var imageStorageRef = firebase.storage().ref('images');
+    var municipalityDetailsRef = firebase.database().ref('details');
 
-    $(document).ready(function () {
-        $('#logo_div').hide();
-    })
+    logoDiv.hide();
 
     //getLogo();
+    imageRef.on('value', function (data) {
+        $timeout(function () {
+            vm.url = data.val(); // https://firebasestorage.googleapis.com/v0/b/gasan-a2fb2.appspot.com/o/images%2Flogo.jpg?alt=media&token=8052b1bd-4b15-484e-8a46-403289416014
+        });
+    });
 
     function getLogo() {
         $http.get(appSettings.BASE_URL + 'api/v1/logos')
@@ -26,7 +34,7 @@
     }
 
     vm.showLogoFormOnClick = function () {
-        $('#logo_div').fadeIn();
+        logoDiv.slideDown();
     };
 
     vm.addLogoOnClick = function () {
@@ -34,11 +42,27 @@
     };
 
     vm.saveImageOnClick = function () {
-        var file = vm.logoFile;
-        console.log('file is ');
-        console.dir(file);
-        fileUpload.uploadFileToUrl(file, appSettings.BASE_URL + 'api/v1/logos');
+        //var file = vm.logoFile;
+        var file = logoInput.files[0];
+        
+        imageStorageRef.child('logo.jpg').put(file)
+            .then(function (data) {
+                imageStorageRef.child('logo.jpg').getDownloadURL()
+                    .then(function (url) {
+                        municipalityDetailsRef.update({
+                            'imageUrl': url
+                        }).then(function (data) {
+                            swal('Success', 'Logo successfully updated', 'success');
 
-        $('#logo_div').fadeOut();
+                            logoDiv.slideUp();
+                        }).catch(function (error) {
+                            swal('Error', error.message, 'error');
+                        });
+                    }).catch(function (error) {
+                        swal('Error', error.message, 'error');
+                    });
+            }).catch(function (error) {
+                swal('Error', error.message, 'error');
+            });
     };
 });
