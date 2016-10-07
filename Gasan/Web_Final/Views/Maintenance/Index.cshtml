@@ -206,28 +206,32 @@
                 </div>
 
                 <!--///////////////////////////BANNER//////////////////////////////////-->
-                <div class="bhoechie-tab-content">
-                    <div class="col-md-offset-10">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#banner_modal"><span class="glyphicon-plus"> Add</span></button>
+                <div class="bhoechie-tab-content" ng-controller="BannerMaintenance as vmBanner">
+                    <h3>Banner Maintenance</h3>
+
+                    <hr />
+                    <div class="col-md-12" id="banner-div">
+                        <div class="contact-form">
+                            <form id="contact-form" ng-submit="vmBanner.bannerOnSubmit()" role="form">
+                                <input id="file-banner" class="file" type="file" multiple data-min-file-count="1">
+                                <br>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="reset" class="btn btn-default">Reset</button>
+                                <button type="reset" class="btn btn-primary" ng-click="vmBanner.closeOnClick()">Close</button>
+                            </form>
+
+                        </div>
                     </div>
 
                     <div class="col-md-12">
-                        <div class="col-md-2">
-                            <img src="~/images/childrens-park-646x401.jpg" alt="" style="height:100px; width:100px; margin-top:25px">
-                        </div>
-                        <div class="col-md-3">
-                            <h3>Label</h3>
-                            <button type="button" class="btn btn-primary">Set as Active Banner</button>
-                        </div>
-                    </div>
+                        <hr />
 
-                    <div class="col-md-12">
                         <div class="col-md-2">
-                            <img src="~/images/childrens-park-646x401.jpg" alt="" style="height:100px; width:100px; margin-top:25px">
+                            <img alt="{{ vmBanner.imageUrl }}" style="height:100px; width:100px; margin-top:25px" ng-src="{{ vmBanner.imageUrl }}">
                         </div>
                         <div class="col-md-3">
-                            <h3>Label</h3>
-                            <button type="button" class="btn btn-primary">Set as Active Banner</button>
+                            <h3>Banner</h3>
+                            <button type="button" class="btn btn-warning" ng-click="vmBanner.showBannerFormOnClick()">Edit</button>
                         </div>
                     </div>
                 </div>

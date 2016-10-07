@@ -363,6 +363,7 @@
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\daterangepicker.min.js" />
+    <Content Include="Scripts\Maintenance\banner_maintenance.js" />
     <Content Include="Scripts\Maintenance\event_maintenance.js" />
     <Content Include="Scripts\fileinput.js" />
     <Content Include="Scripts\fileinput.min.js" />

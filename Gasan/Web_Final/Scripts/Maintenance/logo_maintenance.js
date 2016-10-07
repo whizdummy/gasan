@@ -11,7 +11,7 @@
     //getLogo();
     imageRef.on('value', function (data) {
         $timeout(function () {
-            vm.url = data.val(); // https://firebasestorage.googleapis.com/v0/b/gasan-a2fb2.appspot.com/o/images%2Flogo.jpg?alt=media&token=8052b1bd-4b15-484e-8a46-403289416014
+            vm.url = data.val();
         });
     });
 
