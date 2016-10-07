@@ -1,21 +1,18 @@
-﻿app.controller("AnnouncementMaintenanceController", function (announcementService) {
+﻿app.controller("AnnouncementMaintenanceController", function ($timeout, announcementService) {
     var vm = this;
     var announcementDiv = $('#announcement_div');
+    var announcementRef = firebase.database().ref('announcements');
+    var announcementList = [];
 
     vm.announcementForm = {};
 
     announcementDiv.hide();
 
-    var loadAssignments = function () {
-        announcementService.getAnnouncements()
-            .then(function (response) {
-                vm.announcements = response.data;
-            }, function (responseError) {
-                alert(responseError);
-            });
-    };
-
-    //loadAssignments();
+    announcementRef.on('value', function (data) {
+        $timeout(function () {
+            vm.announcements = data.val();
+        });
+    });
 
     vm.announcementOnClick = function (buttonType, id) {
         vm.buttonType = buttonType;
@@ -30,32 +27,47 @@
 
             // Edit
             case 2:
-                announcementService.getAnnouncement(id)
-                    .then(function(response) {
-                        var announcementDetails = response.data;
-                        var durationDay = announcementDetails.duration / 24;
+                announcementRef.child(id).once('value')
+                    .then(function (data) {
+                        var durationDay = data.val().duration / 24;
 
-                        vm.announcementForm.announcementId  = announcementDetails.id;
-                        vm.announcementForm.title           = announcementDetails.title;
-                        vm.announcementForm.description     = announcementDetails.description;
-                        vm.announcementForm.durationDay     = parseInt(durationDay, 10);
-                        vm.announcementForm.durationHour    = parseInt(announcementDetails.duration - (24 * vm.announcementForm.durationDay), 10);
+                        $timeout(function () {
+                            vm.announcementForm.announcementId = data.key;
+                            vm.announcementForm.title = data.val().title;
+                            vm.announcementForm.description = data.val().description;
+                            vm.announcementForm.durationDay = parseInt(durationDay, 10);
+                            vm.announcementForm.durationHour = parseInt(data.val().duration - (24 * vm.announcementForm.durationDay), 10);
+                        });
 
                         announcementDiv.slideDown();
-                    }, function (responseError) {
-                        alert(responseError);
+                    }).catch(function (error) {
+                        swal('Error', error.message, 'error');
                     });
                 break;
             // Delete
             case 3:
-                announcementService.deleteAnnouncement(id)
-                    .then(function (response) {
-                        alert(response.message);
-
-                        loadAssignments();
-                    }, function (responseError) {
-                        alert('An error occurred');
-                    });
+                swal({
+                    title: "Are you sure?",
+                    text: null,
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    cancelButtonText: "No, cancel it!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        announcementRef.child(id).remove()
+                            .then(function (data) {
+                                swal("Deleted!", "Announcement successfuly deleted", "success");
+                            }).catch(function (error) {
+                                swal('Error', error.message, 'error');
+                            });
+                    } else {
+                        swal("Cancelled", null, "error");
+                    }
+                });
                 break;
             default:
                 alert('Invalid button type!');
@@ -68,33 +80,34 @@
     }
 
     vm.announcementOnSubmit = function (announcementId, submitType) {
-        var announcementDetailsObject = $.param({
+        var announcementDetailsObject = {
             'title':        vm.announcementForm.title,
             'description':  vm.announcementForm.description,
-            'duration':     (vm.announcementForm.durationDay * 24) + vm.announcementForm.durationHour
-        });
+            'duration': (vm.announcementForm.durationDay * 24) + vm.announcementForm.durationHour,
+            'createdAt': Date.now(),
+            'updatedAt': Date.now(),
+            'isExpired': false
+        };
 
         // Add
         if (vm.buttonType == 1) {
-            announcementService.addAnnouncement(announcementDetailsObject)
-                .then(function (response) {
-                    alert(response.message);
+            announcementRef.push(announcementDetailsObject)
+                .then(function (data) {
+                    swal('Success', 'Announcement successfully added', 'success');
 
                     announcementDiv.slideUp();
-                    loadAssignments();
-                }, function (responseError) {
-                    alert('An error occurred');
+                }).catch(function (error) {
+                    swal('Error', error.message, 'error');
                 });
         } else if (vm.buttonType == 2) {
             //Edit
-            announcementService.updateAnnouncement(announcementId, announcementDetailsObject)
-                .then(function(response) {
-                    alert(response.message);
+            announcementRef.child(announcementId).update(announcementDetailsObject)
+                .then(function (data) {
+                    swal('Success', 'Announcement successfully updated', 'success');
 
                     announcementDiv.slideUp();
-                    loadAssignments();
-                }, function(responseError) {
-                    alert('An error occurred');   
+                }).catch(function (error) {
+                    swal('Error', error.message, 'error');
                 });
         }
 

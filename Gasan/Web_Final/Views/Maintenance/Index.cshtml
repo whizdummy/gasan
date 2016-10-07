@@ -137,7 +137,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12" ng-repeat="announcement in vmAnnouncement.announcements">
+                    <div class="col-md-12" ng-repeat="(key, value) in vmAnnouncement.announcements">
                         <hr />
                         <div class="col-md-2">
                             <div class="">
@@ -146,12 +146,12 @@
                         </div>
 
                         <div class="col-md-10">
-                            <h3 ng-bind="announcement.title"></h3>
-                            <p ng-bind="announcement.description"></p>
-                            <button class="btn btn-warning" ng-click="vmAnnouncement.announcementOnClick(2, announcement.id)">
+                            <h3 ng-bind="value.title"></h3>
+                            <p ng-bind="value.description"></p>
+                            <button class="btn btn-warning" ng-click="vmAnnouncement.announcementOnClick(2, key)">
                                 <span class="glyphicon-pencil"></span> Edit
                             </button>
-                            <button class="btn btn-danger" ng-click="vmAnnouncement.announcementOnClick(3, announcement.id)"><span class="glyphicon-minus"></span> Delete</button>
+                            <button class="btn btn-danger" ng-click="vmAnnouncement.announcementOnClick(3, key)"><span class="glyphicon-minus"></span> Delete</button>
                         </div>
                     </div>
                 </div>
