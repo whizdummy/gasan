@@ -19,11 +19,6 @@ namespace Web_Final
                     "~/Scripts/angular.min.js",
                     "~/Scripts/app_angular.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/angular-main").Include(
-                    "~/Scripts/Main/mission_vision_main.js",
-                    "~/Scripts/Main/logo_main.js",
-                    "~/Scripts/Main/announcement_main.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/angular-maintenance").Include(
                         "~/Scripts/Maintenance/mission_vision_maintenance.js",
                         "~/Scripts/Maintenance/logo_maintenance.js",

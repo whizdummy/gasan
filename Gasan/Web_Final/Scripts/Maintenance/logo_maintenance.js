@@ -5,7 +5,7 @@
         $('#logo_div').hide();
     })
 
-    getLogo();
+    //getLogo();
 
     function getLogo() {
         $http.get(appSettings.BASE_URL + 'api/v1/logos')

@@ -15,7 +15,7 @@
             });
     };
 
-    loadAssignments();
+    //loadAssignments();
 
     vm.announcementOnClick = function (buttonType, id) {
         vm.buttonType = buttonType;
