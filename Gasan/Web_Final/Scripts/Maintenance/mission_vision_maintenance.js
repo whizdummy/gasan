@@ -62,7 +62,7 @@
 
         firebase.database().ref('details').update(missionVisionDetails)
             .then(function (data) {
-                alert('Successfully updated!');
+                swal('Success', 'Successfully updated!', 'success');
 
                 missionVisionButton.disabled = false;
                 missionVisionCloseBtn.disabled = false;
@@ -71,7 +71,7 @@
 
                 missionVisionDiv.slideUp();
             }).catch(function (error) {
-                alert(error.message);
+                swal('Error', error.message, 'error');
             });
     }
 
