@@ -83,7 +83,8 @@
             title: vm.eventForm.title,
             description: vm.eventForm.description,
             startDate: (new Date(vm.eventForm.startDate)).getTime(),
-            endDate: (new Date(vm.eventForm.endDate)).getTime()
+            endDate: (new Date(vm.eventForm.endDate)).getTime(),
+            isExpired: false
         };
 
         if (vm.buttonType == 1) {
