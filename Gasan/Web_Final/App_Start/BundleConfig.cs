@@ -20,7 +20,8 @@ namespace Web_Final
                     "~/Scripts/app_angular.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular-main").Include(
-                        "~/Scripts/Main/history_main.js"));
+                        "~/Scripts/Main/history_main.js",
+                        "~/Scripts/Main/banner_main.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular-maintenance").Include(
                         "~/Scripts/Maintenance/mission_vision_maintenance.js",

@@ -6,9 +6,9 @@
 <div class="col-md-12" style="margin-top:-50px">
     <section class="company-description">
 
-        <div class="col-md-12">
+        <div class="col-md-12" ng-controller="BannerController as vmBanner">
             <div class="wow fadeInLeft" data-wow-delay=".3s">
-                <img src="~/images/slider.jpg" alt="" class="img-responsive" style="height:150px;width:1300px">
+                <img ng-src="{{ vmBanner.bannerUrl != null ? vmBanner.bannerUrl : 'http://tfgdb.com/NoArtwork/NoBanner.png' }}" alt="" class="img-responsive" style="height:150px;width:1300px">
             </div>
         </div>
 
