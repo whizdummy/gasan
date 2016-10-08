@@ -292,10 +292,10 @@
                 <div class="bhoechie-tab-content" ng-controller="OfficialMaintenance as vmOfficial">
                     <h3>Officials Maintenance</h3>
                     <div class="col-md-offset-11">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#official_modal"><span class="glyphicon-plus"> Add</span></button>
+                        <button class="btn btn-primary"><span class="glyphicon-plus" ng-click="vmOfficial.toggleOnClick(vmOfficial.toggled)"> <span ng-bind="vmOfficial.toggleMessage"></span></span></button>
                     </div>
 
-                    <div class="block">
+                    <div class="block" id="official-div">
                         <hr />
 
                         <div class="contact-form">

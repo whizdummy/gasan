@@ -1,6 +1,12 @@
 ﻿app.controller('OfficialMaintenance', function ($timeout) {
     var vm = this;
     var officialList = [];
+    var officialDiv = $('#official-div');
+    
+    vm.toggled = false;
+    vm.toggleMessage = 'Add';
+
+    officialDiv.hide();
 
     firebase.database().ref('positions').on('value', function (data) {
         $timeout(function () {
@@ -32,6 +38,23 @@
         });
     });
 
+    vm.toggleOnClick = function (isToggled) {
+        vm.buttonType = 1;
+
+        if (!isToggled) {
+            officialDiv.slideDown();
+
+            vm.toggleMessage = 'Close';
+            vm.toggled = true;
+        } else {
+            officialDiv.slideUp();
+
+            vm.officialForm = {};
+            vm.toggleMessage = 'Add';
+            vm.toggled = false;
+        }
+    }
+
     vm.editOnClick = function (id) {
         vm.buttonType = 2;
         vm.officialId = id;
@@ -44,6 +67,11 @@
                 vm.officialForm.middleName = officialDetails.middleName;
                 vm.officialForm.lastName = officialDetails.lastName;
                 vm.officialForm.description = officialDetails.description;
+
+                officialDiv.slideDown();
+                
+                vm.toggleMessage = 'Close';
+                vm.toggled = true;
             });
         });
     }
@@ -63,6 +91,10 @@
             if (isConfirm) {
                 firebase.database().ref('officials/' + id).remove()
                     .then(function (data) {
+                        $timeout(function () {
+                            vm.toggleOnClick(vm.toggled);
+                        });
+
                         swal("Deleted!", "Official successfully deleted", "success");
                     }).catch(function (error) {
                         swal('Error', error.message, 'error');
@@ -94,7 +126,9 @@
                                         firebase.database().ref('officials/' + vm.officialId).update({
                                             imageUrl: url
                                         }).then(function (data) {
-                                            vm.officialForm = {};
+                                            $timeout(function () {
+                                                vm.toggleOnClick(vm.toggled);
+                                            });
 
                                             swal('Success', 'Official successfully updated', 'success');
                                         }).catch(function (error) {
@@ -107,7 +141,9 @@
                                 swal('Error', error.message, 'error');
                             });
                     } else {
-                        vm.officialForm = {};
+                        $timeout(function () {
+                            vm.toggleOnClick(vm.toggled);
+                        });
 
                         swal('Success', 'Official successfully updated', 'success');
                     }
@@ -125,7 +161,7 @@
                                         imageUrl: url
                                     }).then(function (data) {
                                         $timeout(function () {
-                                            vm.officialForm = {};
+                                            vm.toggleOnClick(vm.toggled);
                                         });
 
                                         swal('Success', 'Official successfully created', 'success');
@@ -137,7 +173,7 @@
                             swal('Error', error.message, 'error');
                         });
                 } else {
-                    vm.officialForm = {};
+                    vm.toggleOnClick(vm.toggled);
                     swal('Success', 'Official successfully created', 'success');
                 }
             }
