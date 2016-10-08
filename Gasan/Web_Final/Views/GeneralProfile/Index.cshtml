@@ -24,47 +24,21 @@
             <div class="col-md-10 bhoechie-tab">
 
                 <!--///////////////////////////HISTORICAL BACKGROUND//////////////////////////////////-->
-                <div class="bhoechie-tab-content active">
+                <div class="bhoechie-tab-content active" ng-controller="HistoryController as vmHistory">
                     <h3>Historical Background</h3>             
-                    <div class="col-md-12">
+                    <div class="col-md-12" ng-repeat="history in vmHistory.histories">
                         <hr />
                         <div class="col-md-2">
                             <div class="">
-                                <img src="~/images/childrens-park-646x401.jpg" alt="" style="height:100px; width:100px; margin-top:25px">
+                                <img ng-src="{{ history.imageUrl }}" alt="" style="height:100px; width:100px; margin-top:25px">
                             </div>
                         </div>
 
                         <div class="col-md-10">       
-                            <h3>Gasan</h3>                     
-                            <p>
-                                The origin of the name of Gasan came from the term “gasang” or “gasang-gasang”, a type of coral stones once 
-                                abundant around the town’s shoreline. Legend has it that when a group of Spanish explorers discovered the town, 
-                                they found an old woman near the banks of today’s Matandang Gasan River. When asked in Spanish what was the name 
-                                of the town, the woman interpreted it as if they were asking about what was the name of the corals growing around 
-                                the area, with the Spaniards interpreting her answer as the name of the town. Over time, the term “gasang-gasang” was 
-                                shortened to “gasa-gasa”, later became “gasang” before being shortened further to Gasan.
-                            </p>                            
+                            <h3 ng-bind="history.title"></h3>                     
+                            <p ng-bind="history.description"></p>                            
                         </div>
                     </div>
-
-                    <div class="col-md-12">
-                        <hr />
-                        <div class="col-md-2">
-                            <div class="">
-                                <img src="~/images/childrens-park-646x401.jpg" alt="" style="height:100px; width:100px; margin-top:25px">
-                            </div>
-                        </div>
-
-                        <div class="col-md-10">
-                            <h3>Barangay Dos</h3>
-                            <p>
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                            </p>                            
-                        </div>
-                    </div>
-
                 </div>
                 <!--///////////////////////////PROFILE//////////////////////////////////-->
                 <div class="bhoechie-tab-content">
@@ -114,14 +88,14 @@
 
                 </div>
 
-                <!--///////////////////////////OFFICIALS//////////////////////////////////-->
-                <div class="bhoechie-tab-content" ng-controller="MissionVisionController as vmMissionVision">
+                <!--///////////////////////////MISSION/VISION//////////////////////////////////-->
+                <div class="bhoechie-tab-content">
                     <h3>Mission and Vision</h3>                    
                     <div class="col-md-12">
                         <hr />                        
                         <div class="col-md-10">
                             <h3>Mission</h3>                            
-                            <p ng-bind="vmMissionVision.missionDetails"></p>                            
+                            <p id="mission-details"></p>                            
                         </div>
                     </div>
 
@@ -129,7 +103,7 @@
                         <hr />                        
                         <div class="col-md-10">
                             <h3>Vision</h3>                            
-                            <p ng-bind="vmMissionVision.visionDetails"></p>                            
+                            <p id="vision-details"></p>                            
                         </div>
                     </div>
                 </div>
@@ -140,4 +114,4 @@
     </div>
 </div>
 
-
+<script type="text/javascript" src="~/Scripts/Main/mission_vision_main.js"></script>
