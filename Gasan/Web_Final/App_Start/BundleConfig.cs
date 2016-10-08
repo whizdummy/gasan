@@ -23,7 +23,8 @@ namespace Web_Final
                         "~/Scripts/Main/history_main.js",
                         "~/Scripts/Main/banner_main.js",
                         "~/Scripts/Main/announcement_main.js",
-                        "~/Scripts/Main/event_main.js"));
+                        "~/Scripts/Main/event_main.js",
+                        "~/Scripts/Main/official_main.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular-maintenance").Include(
                         "~/Scripts/Maintenance/mission_vision_maintenance.js",
