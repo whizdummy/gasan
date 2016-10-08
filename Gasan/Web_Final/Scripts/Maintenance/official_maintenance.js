@@ -35,8 +35,6 @@
 
         $timeout(function () {
             vm.officials = officialList;
-
-            console.log(vm.officials);
         });
     });
 
