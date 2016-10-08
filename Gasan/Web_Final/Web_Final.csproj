@@ -381,6 +381,7 @@
     <Content Include="Scripts\Maintenance\logo_maintenance.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\Maintenance\mission_vision_maintenance.js" />
+    <Content Include="Scripts\Maintenance\official_maintenance.js" />
     <Content Include="Scripts\Maintenance\position_maintenance.js" />
     <Content Include="Scripts\Main\admin_account.js" />
     <Content Include="Scripts\Main\announcement_main.js" />

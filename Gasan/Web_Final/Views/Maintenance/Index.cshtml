@@ -289,7 +289,7 @@
                 </div>
 
                 <!--///////////////////////////OFFICIALS//////////////////////////////////-->
-                <div class="bhoechie-tab-content">
+                <div class="bhoechie-tab-content" ng-controller="OfficialMaintenance as vmOfficial">
                     <h3>Officials Maintenance</h3>
                     <div class="col-md-offset-11">
                         <button class="btn btn-primary" data-toggle="modal" data-target="#official_modal"><span class="glyphicon-plus"> Add</span></button>
@@ -299,58 +299,42 @@
                         <hr />
 
                         <div class="contact-form">
-                            <form id="contact-form" method="post" action="" role="form">
+                            <form id="contact-form" ng-submit="vmOfficial.officialOnSubmit()" role="form">
 
                                 <div class="form-group">
-                                    <input type="text" placeholder="Firstname" class="form-control" name="" id="">
+                                    <input type="text" placeholder="Firstname" class="form-control" ng-model="vmOfficial.officialForm.firstName" required="required">
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" placeholder="Middlename" class="form-control" name="" id="">
+                                    <input type="text" placeholder="Middlename" class="form-control" ng-model="vmOfficial.officialForm.middleName" ng-init="vmOfficial.officialForm.middleName = '';">
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" placeholder="Lastname" class="form-control" name="" id="">
+                                    <input type="text" placeholder="Lastname" class="form-control" ng-model="vmOfficial.officialForm.lastName" required="required">
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea type="text" rows="6" class="form-control" placeholder="Description" ng-model="vmOfficial.officialForm.description"></textarea>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label>Title</label>
+                                    <label>Position</label>
                                     <div class="row">
                                         <div class="col-md-12 ">
                                             <div class="col-md-2">
-                                                <select class="" id="" data-placeholder="Select Title...">
-                                                    <option>Select Title...</option>
-                                                    <option>Mayor</option>
-                                                    <option>Vice-Mayor</option>
+                                                <select class="form-control" ng-model="vmOfficial.officialForm.position" required="required">
+                                                    <option value="" disabled="disabled" selected="selected">Select position</option>
+                                                    <option ng-repeat="(key, value) in vmOfficial.positions" ng-value="key">{{ value.name }}</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-3">
-                                                <button type="button" class="btn btn-primary">+</button>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label>Date:</label>
-                                    <div class="row">
-                                        <div class="col-xs-8 col-sm-11">
-                                            <div class="col-md-3">
-                                                <input type="date" placeholder="Office Start" class="form-control" name="" id="">
-                                            </div>
-
-                                            <div class="col-md-3">
-                                                <input type="date" placeholder="Office End" class="form-control" name="" id="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-12">
-                                    <label for="exampleInputFile">Choose Image</label>
+                                    <label for="official-image">Choose Image</label>
                                     <div class="form-group">
-                                        <input type="file" id="exampleInputFile">
+                                        <input type="file" id="official-image">
                                     </div>
                                 </div>
 
@@ -362,45 +346,20 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12">
+                    <div class="col-md-12" ng-repeat="(key, value) in vmOfficial.officials">
                         <hr />
                         <div class="col-md-2">
                             <div class="">
-                                <img src="~/images/childrens-park-646x401.jpg" alt="" style="height:100px; width:100px; margin-top:25px">
+                                <img ng-src="{{ value.imageUrl != null ? value.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png' }}" alt="" style="height:100px; width:100px; margin-top:25px">
                             </div>
                         </div>
 
                         <div class="col-md-10">
-                            <h3>Officials Name</h3>
-                            <h4>Position</h4>
-                            <p>
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                            </p>
-                            <button class="btn btn-warning"><span class="glyphicon-pencil"></span> Edit</button>
-                            <button class="btn btn-danger"><span class="glyphicon-minus"></span> Delete</button>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <hr />
-                        <div class="col-md-2">
-                            <div class="">
-                                <img src="~/images/childrens-park-646x401.jpg" alt="" style="height:100px; width:100px; margin-top:25px">
-                            </div>
-                        </div>
-
-                        <div class="col-md-10">
-                            <h3>Officials Name</h3>
-                            <h4>Position</h4>
-                            <p>
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                            </p>
-                            <button class="btn btn-warning"><span class="glyphicon-pencil"></span> Edit</button>
-                            <button class="btn btn-danger"><span class="glyphicon-minus"></span> Delete</button>
+                            <h3 ng-bind="value.firstName + ' ' + value.middleName + ' ' + value.lastName"></h3>
+                            <h4 ng-bind="value.position"></h4>
+                            <p ng-bind="value.description"></p>
+                            <button class="btn btn-warning" ng-click="vmOfficial.editOnClick(value.id)"><span class="glyphicon-pencil"></span> Edit</button>
+                            <button class="btn btn-danger" ng-click="vmOfficial.deleteOnClick(value.id)"><span class="glyphicon-minus"></span> Delete</button>
                         </div>
                     </div>
                 </div>
