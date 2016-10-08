@@ -26,7 +26,9 @@
     }
 
     firebase.database().ref('events').on('value', function (data) {
-        vm.events = data.val();
+        $timeout(function () {
+            vm.events = data.val();
+        });
     });
 
     vm.editOnClick = function (id) {
@@ -47,6 +49,31 @@
                 vm.toggle = true;
                 vm.buttonName = "Close";
             });
+        });
+    }
+
+    vm.deleteOnClick = function (id) {
+        swal({
+            title: "Are you sure?",
+            text: null,
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel it!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function (isConfirm) {
+            if (isConfirm) {
+                firebase.database().ref('events/' + id).remove()
+                    .then(function (data) {
+                        swal("Deleted!", "Event successfully deleted", "success");
+                    }).catch(function (error) {
+                        swal('Error', error.message, 'error');
+                    });
+            } else {
+                swal("Cancelled", null, "error");
+            }
         });
     }
 
