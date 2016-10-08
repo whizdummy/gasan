@@ -18,4 +18,14 @@
     vm.parseDate = function (date) {
         return moment(date).format('MMMM DD, YYYY');
     };
+
+    vm.joinEvent = function (joinType, id) {
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                console.log('logged in!');
+            } else {
+                window.location.href = appSettings.basePath + '/useraccount';
+            }
+        });
+    }
 });

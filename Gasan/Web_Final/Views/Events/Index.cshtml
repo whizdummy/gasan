@@ -6,19 +6,19 @@
     <h3 class="subtitle wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms" style="font-size:40px"><center>EVENTS</center></h3>
     <hr />
     <div class="col-md-9">
-        <section class="company-description" ng-repeat="currentEvent in vmEvent.currentEvents">
+        <section class="company-description" ng-repeat="(key, value) in vmEvent.currentEvents">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 wow fadeInLeft" data-wow-delay=".3s">
-                        <img ng-src="{{ currentEvent.imageUrl != null ? currentEvent.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png' }}" alt="" class="img-responsive">
+                        <img ng-src="{{ value.imageUrl != null ? value.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png' }}" alt="" class="img-responsive">
                     </div>
                     <div class="col-md-7">
                         <div class="block">
-                            <h3 class="subtitle wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms" ng-bind="currentEvent.title"></h3>
-                            <p><strong>Start:</strong> <span ng-bind="vmEvent.parseDate(currentEvent.startDate)"></span></p>
-                            <p><strong>End:</strong> <span ng-bind="vmEvent.parseDate(currentEvent.endDate)"></span></p>
+                            <h3 class="subtitle wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms" ng-bind="value.title"></h3>
+                            <p><strong>Start:</strong> <span ng-bind="vmEvent.parseDate(value.startDate)"></span></p>
+                            <p><strong>End:</strong> <span ng-bind="vmEvent.parseDate(value.endDate)"></span></p>
                             <p class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
-                                <strong>Description:</strong> </strong><span ng-bind="currentEvent.description != null ? currentEvent.description : '---'"></span>
+                                <strong>Description:</strong> </strong><span ng-bind="value.description != null ? value.description : '---'"></span>
                             </p>
                         </div>
                         <div class="blog-content wow fadeInLeft" data-wow-delay=".3s">
@@ -32,9 +32,9 @@
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Interested</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Going</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Maybe</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="" ng-click="vmEvent.joinEvent(1, key)">Interested</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="" ng-click="vmEvent.joinEvent(2, key)">Going</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="" ng-click="vmEvent.joinEvent(3, key)">Maybe</a></li>
                                     </ul>
                                 </div>
                             </div>
