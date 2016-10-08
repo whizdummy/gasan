@@ -21,6 +21,9 @@
                         <h4 class="glyphicon glyphicon-flag"></h4><br />Banner
                     </a>
                     <a href="#" class="list-group-item text-center">
+                        <h4 class="glyphicon glyphicon-user"></h4><br />Position
+                    </a>
+                    <a href="#" class="list-group-item text-center">
                         <h4 class="glyphicon glyphicon-user"></h4><br />Officials
                     </a>
                     <a href="#" class="list-group-item text-center">
@@ -256,6 +259,31 @@
                         <div class="col-md-3">
                             <h3>Banner</h3>
                             <button type="button" class="btn btn-warning" ng-click="vmBanner.showBannerFormOnClick()">Edit</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--///////////////////////////Position//////////////////////////////////-->
+                <div class="bhoechie-tab-content" ng-controller="PositionMaintenance as vmPosition">
+                    <h3>Position Maintenance</h3>
+
+                    <hr />
+                    <div class="col-md-12" id="banner-div">
+                        <div class="contact-form">
+                            <form id="contact-form" ng-submit="vmPosition.positionOnSubmit()" role="form">
+                                <input class="form-control" placeholder="Position Name" type="text" required="required" ng-model="vmPosition.position">
+                                <br>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div class="row" ng-repeat="(key, value) in vmPosition.positions">
+                        <div class="col-md-3" >
+                            <h3 ng-bind="value.name"></h3>
+                            <button type="button" class="btn btn-warning" ng-click="vmPosition.editPositionOnClick(key)">Edit</button>
+                            <button type="button" class="btn btn-danger" ng-click="vmPosition.deletePositionOnClick(key)">Delete</button>
                         </div>
                     </div>
                 </div>

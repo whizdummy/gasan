@@ -31,7 +31,8 @@ namespace Web_Final
                         "~/Scripts/Maintenance/history_maintenance.js",
                         "~/Scripts/Maintenance/announcement_maintenance.js",
                         "~/Scripts/Maintenance/event_maintenance.js",
-                        "~/Scripts/Maintenance/banner_maintenance.js"));
+                        "~/Scripts/Maintenance/banner_maintenance.js",
+                        "~/Scripts/Maintenance/position_maintenance.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
