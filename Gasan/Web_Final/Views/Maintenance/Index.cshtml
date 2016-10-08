@@ -303,18 +303,21 @@
                         <section id="contact-section" style="padding:0px">
                             <div class="block">
                                 <div class="contact-form">
-                                    <form id="contact-form" method="post" action="" role="form">
+                                    <form id="contact-form" ng-submit="vmHistory.historyFormOnSubmit()" role="form">
 
                                         <div class="form-group">
-                                            <input type="text" placeholder="History Title" class="form-control" name="" id="">
+                                            <input type="text" placeholder="History Title" class="form-control" 
+                                                   required="required" ng-model="vmHistory.historyForm.title">
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" placeholder="Place" class="form-control" name="" id="">
+                                            <input type="text" placeholder="Place" class="form-control" \
+                                                   required="required" ng-model="vmHistory.historyForm.place">
                                         </div>
 
                                         <div class="form-group">
-                                            <textarea rows="6" placeholder="Description" class="form-control" name="" id=""></textarea>
+                                            <textarea rows="6" placeholder="Description" class="form-control" 
+                                                      ng-model="vmHistory.historyForm.description"></textarea>
                                         </div>
 
                                         <div class="col-md-12">
@@ -322,7 +325,8 @@
                                             <div class="row">
                                                 <div class="col-xs-8 col-sm-11">
                                                     <div class="col-md-3">
-                                                        <input type="date" placeholder="Year" class="form-control" name="" id="">
+                                                        <input type="date" placeholder="Year" class="form-control" 
+                                                               required="required" ng-model="vmHistory.historyForm.date">
                                                     </div>
                                                 </div>
                                             </div>
@@ -332,7 +336,7 @@
                                         <div class="col-md-12">
                                             <label for="exampleInputFile">Choose Image</label>
                                             <div class="form-group">
-                                                <input type="file" id="exampleInputFile">
+                                                <input type="file" id="history-image">
                                             </div>
                                         </div>
 
@@ -346,45 +350,20 @@
                         <hr />
                     </div>
 
-                    <div class="col-md-12">
+                    <div class="col-md-12" ng-repeat="(key, value) in vmHistory.histories">
                         <hr />
                         <div class="col-md-2">
                             <div class="">
-                                <img src="~/images/childrens-park-646x401.jpg" alt="" style="height:100px; width:100px; margin-top:25px">
+                                <img ng-src="{{ value.imageUrl }}" alt="" style="height:100px; width:100px; margin-top:25px">
                             </div>
                         </div>
 
                         <div class="col-md-10">
-                            <h3>History Title(Tres Reyes)</h3>
-                            <h4>Place(Barangay Dos)</h4>
-                            <p>
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                            </p>
-                            <button class="btn btn-warning"><span class="glyphicon-pencil"></span> Edit</button>
-                            <button class="btn btn-danger"><span class="glyphicon-minus"></span> Delete</button>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <hr />
-                        <div class="col-md-2">
-                            <div class="">
-                                <img src="~/images/childrens-park-646x401.jpg" alt="" style="height:100px; width:100px; margin-top:25px">
-                            </div>
-                        </div>
-
-                        <div class="col-md-10">
-                            <h3>History Title(Apoy na Ilog)</h3>
-                            <h4>Place(Tiguin)</h4>
-                            <p>
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                            </p>
-                            <button class="btn btn-warning"><span class="glyphicon-pencil"></span> Edit</button>
-                            <button class="btn btn-danger"><span class="glyphicon-minus"></span> Delete</button>
+                            <h3 ng-bind="value.title"></h3>
+                            <h4 ng-bind="value.place"></h4>
+                            <p ng-bind="value.description"></p>
+                            <button class="btn btn-warning" ng-click="vmHistory.historyEditOnClick(key)"><span class="glyphicon-pencil"></span> Edit</button>
+                            <button class="btn btn-danger" ng-click="vmHistory.historyDeleteOnClick(key)"><span class="glyphicon-minus"></span> Delete</button>
                         </div>
                     </div>
                 </div>
