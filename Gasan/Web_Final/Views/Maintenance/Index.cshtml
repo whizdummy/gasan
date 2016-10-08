@@ -161,44 +161,68 @@
                 <div class="bhoechie-tab-content" ng-controller="EventMaintenanceController as vmEvent">
                     <h3>Events Maintenance</h3>
                     <div class="col-md-offset-11">
-                        <button class="btn btn-primary" ><span class="glyphicon-plus"> Add</span></button>
+                        <button class="btn btn-primary" ng-click="vmEvent.toggleEventOnClick(vmEvent.toggle)"><span class="glyphicon-plus"> <span ng-bind="vmEvent.buttonName"></span></span></button>
                     </div>
 
-                    <div class="col-md-12">
+                    <hr />
+
+                    <div class="block" id="event-div">
+                        <div class="contact-form">
+                            <form id="contact-form" ng-submit="vmEvent.eventOnSubmit()" role="form">
+
+                                <div class="form-group">
+                                    <input type="text" placeholder="Event Title" class="form-control" required="required" ng-model="vmEvent.eventForm.title">
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea rows="6" placeholder="Description" class="form-control" ng-model="vmEvent.eventForm.description"></textarea>
+                                </div>
+
+                                
+                                <div class="col-md-6">
+                                    <label>Start</label>
+                                    <div class="row">
+                                        <div class="col-xs-8 col-sm-11">
+                                            <input class="form-control" type="date" name="date-range-picker" required="required" ng-model="vmEvent.eventForm.startDate" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>End</label>
+                                    <div class="row">
+                                        <div class="col-xs-8 col-sm-11">
+                                            <input class="form-control" type="date" name="date-range-picker" required="required" ng-model="vmEvent.eventForm.endDate" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="exampleInputFile">Choose Image</label>
+                                    <div class="form-group">
+                                        <input type="file" id="event-image">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" ng-repeat="(key, value) in vmEvent.events">
                         <hr />
                         <div class="col-md-2">
                             <div class="">
-                                <img src="~/images/childrens-park-646x401.jpg" alt="" style="height:100px; width:100px; margin-top:25px">
+                                <img ng-src="{{ value.imageUrl != null ? value.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png' }}" alt="" style="height:100px; width:100px; margin-top:25px">
                             </div>
                         </div>
 
                         <div class="col-md-10">
-                            <h3>Event Title</h3>
-                            <p>
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                            </p>
-                            <button class="btn btn-warning"><span class="glyphicon-pencil"></span> Edit</button>
-                            <button class="btn btn-danger"><span class="glyphicon-minus"></span> Delete</button>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <hr />
-                        <div class="col-md-2">
-                            <div class="">
-                                <img src="~/images/childrens-park-646x401.jpg" alt="" style="height:100px; width:100px; margin-top:25px">
-                            </div>
-                        </div>
-
-                        <div class="col-md-10">
-                            <h3>Event Title</h3>
-                            <p>
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                                Descriptions Descriptions Descriptions Descriptions Descriptions
-                            </p>
+                            <h3 ng-bind="value.title"></h3>
+                            <p ng-bind="value.description"></p>
                             <button class="btn btn-warning"><span class="glyphicon-pencil"></span> Edit</button>
                             <button class="btn btn-danger"><span class="glyphicon-minus"></span> Delete</button>
                         </div>
@@ -514,70 +538,6 @@
         </div>
     </div>
 </div>
-
-
-<!--///////////////////////////EVENTS_MODAL//////////////////////////////////-->
-<div class="modal fade" id="event_modal" role="dialog">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="modal-content">
-            <div class="modal-header">
-                <center>
-                    <h3><span class="ace-icon fa fa-glass"></span>Event Informations</h3>
-                </center>
-            </div>
-            <div class="modal-body">
-                <section id="contact-section" style="padding:0px">
-                    <div class="block">
-                        <div class="contact-form">
-                            <form id="contact-form" method="post" action="" role="form">
-
-                                <div class="form-group">
-                                    <input type="text" placeholder="Event Title" class="form-control" name="" id="">
-                                </div>
-
-                                <div class="form-group">
-                                    <textarea rows="6" placeholder="Description" class="form-control" name="" id=""></textarea>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <label>Duration</label>
-                                    <div class="row">
-                                        <div class="col-xs-8 col-sm-11">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-calendar bigger-110"></i>
-                                                </span>
-
-                                                <input class="form-control" type="text" name="date-range-picker" id="id-date-range-picker-1" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-12">
-                                    <label for="exampleInputFile">Choose Image</label>
-                                    <div class="form-group">
-                                        <input type="file" id="exampleInputFile">
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <center>
-                                        <button type="submit" class="btn btn-primary">Save</button>
-                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                                    </center>
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <!--///////////////////////////OFFICIALS_MODAL//////////////////////////////////-->
 <div class="modal fade" id="official_modal" role="dialog">
