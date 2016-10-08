@@ -46,32 +46,43 @@
             var history = historyRef.push(historyObject);
 
             if (history.key) {
-                historyStorageRef.child(history.key + '.jpg').put(file)
-                .then(function (data) {
-                    historyStorageRef.child(history.key + '.jpg').getDownloadURL()
-                        .then(function (url) {
-                            firebase.database().ref('histories/' + history.key).update({
-                                'imageUrl': url
-                            }).then(function (data) {
-                                $timeout(function () {
-                                    vm.historyForm = {};
+                if(file) {
+                    historyStorageRef.child(history.key + '.jpg').put(file)
+                    .then(function (data) {
+                        historyStorageRef.child(history.key + '.jpg').getDownloadURL()
+                            .then(function (url) {
+                                firebase.database().ref('histories/' + history.key).update({
+                                    'imageUrl': url
+                                }).then(function (data) {
+                                    $timeout(function () {
+                                        vm.historyForm = {};
 
-                                    vm.isToggled = false;
-                                    vm.toggleMessage = "Add";
+                                        vm.isToggled = false;
+                                        vm.toggleMessage = "Add";
 
-                                    historyDiv.slideUp();
+                                        historyDiv.slideUp();
 
-                                    swal('Success', 'History successfully added', 'success');
+                                        swal('Success', 'History successfully added', 'success');
+                                    });
+                                }).catch(function (error) {
+                                    swal('Error', error.message, 'error');
                                 });
                             }).catch(function (error) {
                                 swal('Error', error.message, 'error');
                             });
-                        }).catch(function (error) {
-                            swal('Error', error.message, 'error');
-                        });
-                }).catch(function (error) {
-                    swal('Error', error.message, 'error');
-                });
+                    }).catch(function (error) {
+                        swal('Error', error.message, 'error');
+                    });
+                } else {
+                    swal('Success', 'History successfully added', 'success');
+
+                    vm.historyForm = {};
+
+                    vm.isToggled = false;
+                    vm.toggleMessage = "Add";
+
+                    historyDiv.slideUp();
+                }
             } else {
                 swal('Error', 'Something went wrong', 'error');
             }

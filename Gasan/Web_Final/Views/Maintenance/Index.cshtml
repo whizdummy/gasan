@@ -354,7 +354,7 @@
                         <hr />
                         <div class="col-md-2">
                             <div class="">
-                                <img ng-src="{{ value.imageUrl }}" alt="" style="height:100px; width:100px; margin-top:25px">
+                                <img ng-src="{{ value.imageUrl != null ? value.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png' }}" alt="" style="height:100px; width:100px; margin-top:25px">
                             </div>
                         </div>
 
