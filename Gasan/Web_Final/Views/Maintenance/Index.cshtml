@@ -223,8 +223,8 @@
                         <div class="col-md-10">
                             <h3 ng-bind="value.title"></h3>
                             <p ng-bind="value.description"></p>
-                            <button class="btn btn-warning"><span class="glyphicon-pencil"></span> Edit</button>
-                            <button class="btn btn-danger"><span class="glyphicon-minus"></span> Delete</button>
+                            <button class="btn btn-warning" ng-click="vmEvent.editOnClick(key)"><span class="glyphicon-pencil"></span> Edit</button>
+                            <button class="btn btn-danger" ng-click="vmEvent.deleteOnClick(key)"><span class="glyphicon-minus"></span> Delete</button>
                         </div>
                     </div>
                 </div>
