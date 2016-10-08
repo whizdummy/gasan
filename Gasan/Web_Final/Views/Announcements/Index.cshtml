@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 wow fadeInLeft" data-wow-delay=".3s">
-                        <img src="~/images/slider.jpg" alt="" class="img-responsive">
+                        <img src="http://www.redeemerla.org/COR/userfiles/page_banner18.png" alt="" class="img-responsive">
                     </div>
                     <div class="col-md-7">
                         <div class="block">
@@ -30,12 +30,13 @@
                 <hr />
 
                 <ul>
-                    <li ng-repeat="lapsedAnnouncement in vmAnnouncement.lapsedAnnouncements">
+                    <li ng-if="vmAnnouncement.lapsedAnnouncements != null" ng-repeat="lapsedAnnouncement in vmAnnouncement.lapsedAnnouncements">
                         <a href="#"><h4 ng-bind="lapsedAnnouncement.title">---</h4></a>
                         <p ng-bind="lapsedAnnouncement.description">---</p>
-                        <time ng-bind="lapsedAnnouncement.updated_at">---</time>
+                        <p ng-bind="vmAnnouncement.parseDate(lapsedAnnouncement.updatedAt)">---</p>
                     </li>
                 </ul>
+                <h3 ng-if="vmAnnouncement.lapsedAnnouncements == null">No past announcements yet</h3>
             </div>
         </div>
     </div>

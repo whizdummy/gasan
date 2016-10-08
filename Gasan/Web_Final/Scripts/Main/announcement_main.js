@@ -1,36 +1,23 @@
-﻿app.controller('AnnouncementController', function (announcementService) {
+﻿app.controller('AnnouncementController', function ($timeout) {
     var vm = this;
+    var announcementRef = firebase.database().ref('announcements');
 
-    // Current announcements
-    announcementService.getAnnouncements(0)
-        .then(function (response) {
-            vm.currentAnnouncements = response.data;
-
-            lapsedAnnouncements();
-        }, function (responseError) {
-            alert(responseError.config.url + ": " + responseError.statusText);
+    announcementRef.orderByChild('isExpired').equalTo(false).on('value', function (data) {
+        $timeout(function () {
+            vm.currentAnnouncements = data.val();
         });
+    });
 
-    function lapsedAnnouncements() {
-        // Lapsed/Past announcements
-        announcementService.getAnnouncements(1)
-            .then(function (response) {
-                vm.lapsedAnnouncements = response.data;
+    announcementRef.orderByChild('isExpired').equalTo(true).on('value', function (data) {
+        $timeout(function () {
+            vm.lapsedAnnouncements = data.val();
+        });
+    });
 
-                getNAnnouncements();
-            }, function (responseError) {
-                alert(responseError.config.url + ": " + responseError.statusText);
-            });
-    }
+    vm.parseDate = function (unixTimestamp) {
+        var date = moment(unixTimestamp).format("MMMM DD, YYYY");
+        console.log(date);
 
-    function getNAnnouncements() {
-        announcementService.getNAnnouncements(1)
-            .then(function (response) {
-                console.log(response);
-                vm.announcementTitle    = response.data[0].title;
-                vm.announcementDesc     = response.data[0].description;
-            }, function (responseError) {
-                alert(responseError.config.url + ": " + responseError.statusText);
-            });
+        return date;
     }
 });
